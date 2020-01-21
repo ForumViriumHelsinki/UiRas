@@ -6,6 +6,7 @@
   "scripts": {
     "start": "react-scripts start --no-cache",
     "build": "react-scripts build",
+    "deploy": "react-scripts build && scp -r build root@docker.fvh.io:uiras",
     "test": "react-scripts test --no-cache",
     "eject": "react-scripts eject"
   },
@@ -15,9 +16,13 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.4.1",
+    "moment": "^2.24.0",
+    "plotly.js": "^1.52.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-plotly.js": "^2.4.0",
     "react-scripts": "3.3.0",
+    "reactstrap": "^8.4.0",
     "sass": "^1.23.7",
     "typescript": "^3.7.4"
   },
