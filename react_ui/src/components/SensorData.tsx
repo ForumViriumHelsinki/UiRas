@@ -37,7 +37,7 @@ export default class SensorData extends React.Component<SensorDataProps,SensorDa
       : 'summer';
 
     return <>
-      <div onClick={()=>this.setState({expanded: !this.state.expanded})}>
+      <div onClick={()=>this.setState({expanded: !this.state.expanded})} className="clickable">
         <CardBody>
           <h4>{name}
             <i className="material-icons">{this.state.expanded ? 'expand_less' : 'expand_more'}</i>
