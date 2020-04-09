@@ -76,7 +76,7 @@ export default class SensorData extends React.Component<SensorDataProps,SensorDa
         type: 'scatter',
         mode: 'lines',
         name: name,
-        line: {color: this.colors[i], width: 1},
+        line: {color: this.colors[i], width: 3},
         opacity: 0.6
       }
     })
