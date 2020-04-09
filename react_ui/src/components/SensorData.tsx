@@ -56,11 +56,26 @@ export default class SensorData extends React.Component<SensorDataProps,SensorDa
   private getLayout() {
     return {
       height: 240,
-      margin: {l: 16, r: 0, t: 0, b: 64},
+      margin: {l: 26, r: 10, t: 0, b: 64},
       title: '',
       legend: {orientation: 'h', bgcolor: 'transparent', y: -0.2},
       paper_bgcolor: 'rgba(255,255,255,0.5)',
-      plot_bgcolor: 'rgba(255,255,255,0.0)'
+      plot_bgcolor: 'rgba(255,255,255,0.0)',
+      xaxis: {
+        // autotick: false,
+        ticks: 'outside',
+        tickangle: 'auto',
+        tickcolor: '#000',
+        tickformat: '%d.%m.\n %Y',
+        hoverformat: '%d.%m.%Y %H:%M',
+        gridcolor: '#ccc'
+      },
+      yaxis: {
+        // autotick: false,
+        tickangle: 'auto',
+        tickcolor: '#000',
+        gridcolor: '#ccc'
+      }
     };
   }
 
@@ -77,6 +92,7 @@ export default class SensorData extends React.Component<SensorDataProps,SensorDa
         mode: 'lines',
         name: name,
         line: {color: this.colors[i], width: 3},
+        hovertemplate: '%{y:.1f}°C',
         opacity: 0.6
       }
     })
