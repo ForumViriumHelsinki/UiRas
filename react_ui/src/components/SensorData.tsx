@@ -17,12 +17,18 @@ type SensorDataProps = {
   }
 }
 
-export default class SensorData extends React.Component<SensorDataProps> {
+type SensorDataState = {
+  expanded: boolean
+}
+
+export default class SensorData extends React.Component<SensorDataProps,SensorDataState> {
   colors = ['#FF5000', '#009E92', '#d70074', '#28a745', '#6610f2'];
+  state = {expanded: false};
 
   render() {
     const {name, data} = this.props.sensor;
-    const latest = data[data.length - 1];
+    const cleanData = data.filter(d => d.temp_water && d.temp_air);
+    const latest = cleanData[cleanData.length - 1];
     const pillCls = "p-1 pr-3 pl-3 rounded-pill bg-light nowrap";
 
     document.getElementsByTagName('body')[0].className =
@@ -31,13 +37,17 @@ export default class SensorData extends React.Component<SensorDataProps> {
       : 'summer';
 
     return <>
-      <CardBody>
-        <h4>{name}</h4>
-        <span className={pillCls}>Water: {latest.temp_water.toFixed(1)} °C</span>{' '}
-        <span className={pillCls}>Air: {latest.temp_air.toFixed(1)} °C</span>{' '}
-        <span className="small nowrap mt-1 d-inline-block">{moment(latest.time).fromNow()}</span>
-      </CardBody>
-      <Plot data={this.getPlotData()} layout={this.getLayout()} config={{displayModeBar: false}} />
+      <div onClick={()=>this.setState({expanded: !this.state.expanded})}>
+        <CardBody>
+          <h4>{name}
+            <i className="material-icons">{this.state.expanded ? 'expand_less' : 'expand_more'}</i>
+          </h4>
+          <span className={pillCls}>Water: {latest.temp_water.toFixed(1)} °C</span>{' '}
+          <span className={pillCls}>Air: {latest.temp_air.toFixed(1)} °C</span>{' '}
+          <span className="small nowrap mt-1 d-inline-block">{moment(latest.time).fromNow()}</span>
+        </CardBody>
+      </div>
+      {this.state.expanded && <Plot data={this.getPlotData()} layout={this.getLayout()} config={{displayModeBar: false}}/>}
       <div className="mb-2">
       </div>
     </>;

@@ -11,7 +11,7 @@ class NavBar extends React.Component {
         <i className="material-icons bg-light text-primary rounded-circle p-1">pool</i>
       </div>
       <div className="w-50 text-light text-center">
-        <h4 className="mb-0">FVH Uiras</h4>
+        <h4 className="mb-0">FVH UiRaS</h4>
         <span className="small d-none d-md-inline">Uimarantasensorit - </span>
         <span className="small">Bathing conditions in HEL</span>
       </div>
