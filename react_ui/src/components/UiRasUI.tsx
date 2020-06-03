@@ -16,7 +16,9 @@ class NavBar extends React.Component {
         <span className="small">Bathing conditions in HEL</span>
       </div>
       <div className="w-25 d-flex justify-content-end">
-        <img style={{maxHeight: 48, marginRight: -16}} src="images/FORUM_VIRIUM_logo_white.png"/>
+        <a href="https://forumvirium.fi">
+          <img style={{maxHeight: 48, marginRight: -16}} src="images/FORUM_VIRIUM_logo_white.png" alt="Forum Virium Helsinki"/>
+        </a>
       </div>
     </nav>;
   }

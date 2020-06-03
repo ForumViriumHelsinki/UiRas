@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import 'moment/locale/fi';
 
 // @ts-ignore
 import {CardBody} from 'reactstrap';
@@ -30,6 +31,8 @@ export default class SensorData extends React.Component<SensorDataProps,SensorDa
     const cleanData = data.filter(d => d.temp_water && d.temp_air);
     const latest = cleanData[cleanData.length - 1];
     const pillCls = "p-1 pr-3 pl-3 rounded-pill bg-light nowrap";
+    moment.locale('fi');
+
 
     document.getElementsByTagName('body')[0].className =
       (latest.temp_water < 6) ? 'winter'
@@ -42,8 +45,8 @@ export default class SensorData extends React.Component<SensorDataProps,SensorDa
           <h4>{name}
             <i className="material-icons">{this.state.expanded ? 'expand_less' : 'expand_more'}</i>
           </h4>
-          <span className={pillCls}>Water: {latest.temp_water.toFixed(1)} °C</span>{' '}
-          <span className={pillCls}>Air: {latest.temp_air.toFixed(1)} °C</span>{' '}
+          <span className={pillCls}>Veden lämpötila: {latest.temp_water.toFixed(1)} °C</span>{' '}
+          {/*<span className={pillCls}>Air: {latest.temp_air.toFixed(1)} °C</span>{' '}*/}
           <span className="small nowrap mt-1 d-inline-block">{moment(latest.time).fromNow()}</span>
         </CardBody>
       </div>
@@ -81,7 +84,8 @@ export default class SensorData extends React.Component<SensorDataProps,SensorDa
 
   getPlotData() {
     const {data} = this.props.sensor;
-    return [['Air', 'temp_air'], ['Water', 'temp_water']].map(([name, key], i) => {
+    // return [['Air', 'temp_air'], ['Water', 'temp_water']].map(([name, key], i) => {
+    return [['Water', 'temp_water']].map(([name, key], i) => {
       // @ts-ignore
       const items = data.filter((item) => item[key]);
       return {
