@@ -15,6 +15,8 @@ import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
+import CustomizedDialogs from "./CustomizedDialogs";
+
 const pages = ["Kartta", "Lokikirja", "Info"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -70,6 +72,8 @@ function ResponsiveAppBar() {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <CustomizedDialogs />
+            {/* TODO: Waiting for implementation of the pages
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -104,6 +108,7 @@ function ResponsiveAppBar() {
                 </MenuItem>
               ))}
             </Menu>
+ */}
           </Box>
           <Pool sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography

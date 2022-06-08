@@ -66,12 +66,14 @@ function useQueryGetUiras() {
  * Styled strings in grid rows
  */
 const UirasName = styled.div(() => ({
-  fontSize: "90%",
+  fontSize: "100%",
   fontWeight: "bold",
+  textAlign: "left",
 }));
 
 const UirasLocation = styled.div(() => ({
   fontSize: "60%",
+  textAlign: "left",
 }));
 
 const Temperature = styled.div(() => ({
@@ -86,10 +88,10 @@ function Slot({ properties }: UirasFeature): JSX.Element {
   const datea = moment(properties.time);
   // const timediff = -moment(datea).diff(new Date()) / 1000;
   return (
-    <Row className="justify-content-md-left border">
-      <Col className="col-7 bg-light text-black jutext-left text-md-right">
-        <UirasName>{properties.name}</UirasName>
-        <UirasLocation>
+    <Row className="border">
+      <Col className="col-7 bg-light text-black">
+        <UirasName className="text-truncate">{properties.name}</UirasName>
+        <UirasLocation className="text-truncate">
           {properties.location}
           {properties.location ? ", " : ""}
           {properties.district}
@@ -100,7 +102,7 @@ function Slot({ properties }: UirasFeature): JSX.Element {
           {properties.temp_water.toFixed(1)}
           °C
         </Temperature>
-        <Moment>{moment(datea).fromNow()}</Moment>
+        <Moment className="text-truncate">{moment(datea).fromNow()}</Moment>
       </Col>
       {/* {timediff} secs old */}
     </Row>
