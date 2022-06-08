@@ -1,12 +1,14 @@
-import * as React from 'react';
-import moment from 'moment';
-import 'moment/locale/fi';
-import axios from 'axios';
-import { useQuery } from 'react-query';
-import styled from '@emotion/styled';
-import { Container, Row, Col } from 'reactstrap';
-import ResponsiveAppBar from './ResponsiveAppBar';
-import { Result, unwrapResult, withResult } from '../result';
+import "moment/locale/fi";
+
+import axios from "axios";
+import moment from "moment";
+import { useQuery } from "react-query";
+import { Col, Container, Row } from "reactstrap";
+
+import styled from "@emotion/styled";
+
+import { Result, unwrapResult, withResult } from "../result";
+import ResponsiveAppBar from "./ResponsiveAppBar";
 
 /**
  * Types for UiRaS GeoJSON features
@@ -19,16 +21,16 @@ type FeatureProperties = {
   temp_internal: number;
   temp_water: number;
   time: string;
-}
+};
 
 type GeometryCoordinates = {
   coordinates: [number, number];
-}
+};
 
 type FeatureGeometry = {
-  type: 'Point';
+  type: "Point";
   coordinates: GeometryCoordinates;
-}
+};
 
 type UirasFeature = {
   geometry: FeatureGeometry;
@@ -46,7 +48,7 @@ export async function getUiras(): Promise<Result<GetUirasResponse>> {
   return withResult(async () => {
     const { data, status } = await axios.get<GetUirasResponse>(
       // `${config.API_URL}`
-      'https://iot.fvh.fi/opendata/uiras/uiras2_v2.geojson',
+      "https://iot.fvh.fi/opendata/uiras/uiras2_v2.geojson"
     );
     console.log(`getUiras() --> ${status}`);
     return data;
@@ -57,47 +59,39 @@ export async function getUiras(): Promise<Result<GetUirasResponse>> {
  * Wrap getUiras() in useQuery
  */
 function useQueryGetUiras() {
-  return useQuery(['uiras'], async () => unwrapResult(await getUiras()));
+  return useQuery(["uiras"], async () => unwrapResult(await getUiras()));
 }
 
 /**
  * Styled strings in grid rows
  */
-const UirasName = styled.div(
-  () => ({
-    fontSize: '90%',
-    fontWeight: 'bold',
-  }),
-);
+const UirasName = styled.div(() => ({
+  fontSize: "90%",
+  fontWeight: "bold",
+}));
 
-const UirasLocation = styled.div(
-  () => ({
-    fontSize: '60%',
-  }),
-);
+const UirasLocation = styled.div(() => ({
+  fontSize: "60%",
+}));
 
-const Temperature = styled.div(
-  () => ({
-    fontWeight: 'bold',
-  }),
-);
+const Temperature = styled.div(() => ({
+  fontWeight: "bold",
+}));
 
-const Moment = styled.div(
-  () => ({
-    fontSize: '60%',
-  }),
-);
+const Moment = styled.div(() => ({
+  fontSize: "60%",
+}));
 
 function Slot({ properties }: UirasFeature): JSX.Element {
   const datea = moment(properties.time);
   // const timediff = -moment(datea).diff(new Date()) / 1000;
   return (
     <Row className="justify-content-md-left border">
-      <Col className="col-7 bg-light text-black">
+      <Col className="col-7 bg-light text-black jutext-left text-md-right">
         <UirasName>{properties.name}</UirasName>
         <UirasLocation>
           {properties.location}
-          {properties.location ? ', ' : ''}
+          {properties.location ? ", " : ""}
           {properties.district}
         </UirasLocation>
       </Col>
@@ -114,12 +108,17 @@ function Slot({ properties }: UirasFeature): JSX.Element {
 }
 
 function SlotList({ features }: GetUirasResponse): JSX.Element {
-  moment.locale('fi');
+  moment.locale("fi");
   features.sort((a, b) => a.properties.name.localeCompare(b.properties.name));
   return (
     <>
       {features.map((data) => (
-        <Slot key={data.properties.time} properties={data.properties} geometry={data.geometry} />))}
+        <Slot
+          key={data.properties.time}
+          properties={data.properties}
+          geometry={data.geometry}
+        />
+      ))}
     </>
   );
 }
@@ -133,9 +132,7 @@ export function UirasList(): JSX.Element {
   return (
     <div>
       {uirasQuery.isLoading && <div>Ladataan!</div>}
-      {uirasQuery.isSuccess && (
-        <SlotList features={uirasQuery.data.features} />
-      )}
+      {uirasQuery.isSuccess && <SlotList features={uirasQuery.data.features} />}
     </div>
   );
 }
