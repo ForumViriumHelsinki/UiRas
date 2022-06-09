@@ -83,9 +83,18 @@ export default function CustomizedDialogs() {
             <strong>Huom!</strong> Tämä on uusi <strong>uiras.fvh.io</strong>
             -sivu, jota kehitetään aktiivisesti lähiviikkoina. Voit ehdottaa
             uusia toiminnallisuuksia ja lähettää palautetta uimarantasensoreista{" "}
-            <strong>palautelomakkeella</strong>.
+            <strong>
+              <a href="https://forumvirium.fi/uiraspalaute/">
+                palautelomakkeella
+              </a>
+            </strong>
+            .
           </Typography>
-          <Typography gutterBottom>
+          {/* 
+            explicit component is needed here, because otherwise Typography is rendered as <p> (and h4 is not allowd in there)
+            TODO: try to use List and ListItem or something 
+          */}
+          <Typography gutterBottom component={"div"}>
             <h4>Suunniteltuja toimintoja</h4>
             <ul>
               <li>mittauspisteet kartalla</li>
@@ -97,7 +106,10 @@ export default function CustomizedDialogs() {
             </ul>
           </Typography>
           <Typography gutterBottom>
-            UiRaS on Forum Virium Helsingin ja Helsigin kaupungin kokeilu.
+            UiRaS on Forum Virium Helsingin ja Helsingin kaupungin vuonna 2020
+            alkanut kokeilu. Vanha nettisivu löytyy vielä hetken aikaa
+            osoitteessa{" "}
+            <a href="https://uiras-v1.fvh.io/">https://uiras-v1.fvh.io/</a>.
           </Typography>
         </DialogContent>
         <DialogActions>
