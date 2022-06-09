@@ -1,4 +1,5 @@
 /.idea/
+venv
 /react_ui/build/
 /react_ui/node_modules/
 .DS_Store

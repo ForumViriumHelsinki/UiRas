@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
 
 import { UirasUI } from "./components/UirasUI";
 
@@ -19,11 +20,11 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
+      <Typography component="div" className="App">
         <header className="App-header">
           <UirasUI />
         </header>
-      </div>
+      </Typography>
     </ThemeProvider>
   );
 }

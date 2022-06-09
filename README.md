@@ -1,11 +1,11 @@
-# UiRas
+# UiRaS
 To start UI development:
 
 * Install node.js
 * Run:
 ```
 npm install -g yarn
-cd react_ui
+cd react_ui2
 yarn
 yarn start
 ```

@@ -61,32 +61,21 @@ export default function CustomizedDialogs() {
   return (
     <div>
       <a onClick={handleClickOpen}>Info</a>
-      <BootstrapDialog
-        onClose={handleClose}
-        aria-labelledby="customized-dialog-title"
-        open={open}
-      >
-        <BootstrapDialogTitle
-          id="customized-dialog-title"
-          onClose={handleClose}
-        >
+      <BootstrapDialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
           Tietoa uimarantasensoreista
         </BootstrapDialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
-            UiRaS-uimarantasensorit mittaavat veden lämpötilaa parissa
-            kymmenessä mittauspisteessä pääkaupunkiseudulla. Mittaustiedot
-            julkaistaan tällä sivulla ja lisäksi avoimena datana kenen tahansa
-            kiinnostuneen käyttöön.
+            UiRaS-uimarantasensorit mittaavat veden lämpötilaa parissa kymmenessä mittauspisteessä pääkaupunkiseudulla.
+            Mittaustiedot julkaistaan tällä sivulla ja lisäksi avoimena datana kenen tahansa kiinnostuneen käyttöön.
           </Typography>
           <Typography gutterBottom>
             <strong>Huom!</strong> Tämä on uusi <strong>uiras.fvh.io</strong>
-            -sivu, jota kehitetään aktiivisesti lähiviikkoina. Voit ehdottaa
-            uusia toiminnallisuuksia ja lähettää palautetta uimarantasensoreista{" "}
+            -sivu, jota kehitetään aktiivisesti lähiviikkoina. Voit ehdottaa uusia toiminnallisuuksia ja lähettää
+            palautetta uimarantasensoreista{" "}
             <strong>
-              <a href="https://forumvirium.fi/uiraspalaute/">
-                palautelomakkeella
-              </a>
+              <a href="https://forumvirium.fi/uiraspalaute/">palautelomakkeella</a>
             </strong>
             .
           </Typography>
@@ -97,19 +86,18 @@ export default function CustomizedDialogs() {
           <Typography gutterBottom component={"div"}>
             <h4>Suunniteltuja toimintoja</h4>
             <ul>
+              <li>mittaushistoriakuvaajan parantelua</li>
               <li>mittauspisteet kartalla</li>
-              <li>mittaushistoria kuvaajana</li>
               <li>mittauspisteeseen liittyvät lisätiedot</li>
               <li>lokikirja</li>
               <li>suosikkirantojen tallennus</li>
+              <li>kielituki eli svenska- ja English-versiot</li>
               <li>ehdottamasi toiminto?</li>
             </ul>
           </Typography>
           <Typography gutterBottom>
-            UiRaS on Forum Virium Helsingin ja Helsingin kaupungin vuonna 2020
-            alkanut kokeilu. Vanha nettisivu löytyy vielä hetken aikaa
-            osoitteessa{" "}
-            <a href="https://uiras-v1.fvh.io/">https://uiras-v1.fvh.io/</a>.
+            UiRaS on Forum Virium Helsingin ja Helsingin kaupungin vuonna 2020 alkanut kokeilu. Vanha nettisivu löytyy
+            vielä hetken aikaa osoitteessa <a href="https://uiras-v1.fvh.io/">https://uiras-v1.fvh.io/</a>.
           </Typography>
         </DialogContent>
         <DialogActions>
