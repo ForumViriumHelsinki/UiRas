@@ -3,13 +3,16 @@ module.exports = {
   "parser": "@typescript-eslint/parser",
   "plugins": [
     "react",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "jsx-a11y",
   ],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
   ],
   "env": {
     "browser": true,

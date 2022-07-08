@@ -90,7 +90,7 @@ export default function InfoDialog({ handleClose }: { handleClose: () => void })
         </Typography>
       </DialogContent>
       <DialogActions>
-        <Button autoFocus onClick={handleClose}>
+        <Button onClick={handleClose}>
           Sulje
         </Button>
       </DialogActions>
