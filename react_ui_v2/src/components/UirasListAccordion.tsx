@@ -59,33 +59,30 @@ function Slot({ id, properties, geometry }: UirasFeature): JSX.Element {
 
   // const timediff = -moment(datea).diff(new Date()) / 1000;
   return (
-    <div>
-      <Accordion TransitionProps={{ unmountOnExit: true }} key={id}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Grid container direction="row" justifyContent="space-between">
-            <Grid item xs={8} p={0}>
-              <UirasName className="text-truncate">{properties.name}</UirasName>
-              <UirasLocation className="text-truncate">
-                {properties.location}
-                {properties.location ? ", " : ""}
-                {properties.district}
-              </UirasLocation>
-            </Grid>
-            <Grid item xs={4}>
-              <Temperature>
-                {properties.temp_water.toFixed(1)}
-                °C
-              </Temperature>
-              <Moment className="text-truncate">{moment(datea).fromNow()}</Moment>
-            </Grid>
+    <Accordion TransitionProps={{ unmountOnExit: true }} key={id}>
+      <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
+        <Grid container direction="row" justifyContent="space-between">
+          <Grid item xs={8} p={0}>
+            <UirasName className="text-truncate">{properties.name}</UirasName>
+            <UirasLocation className="text-truncate">
+              {properties.location}
+              {properties.location ? ", " : ""}
+              {properties.district}
+            </UirasLocation>
           </Grid>
-        </AccordionSummary>
-        <AccordionDetails>
-          <PlotyGraph2 item={id} />
-        </AccordionDetails>
-      </Accordion>
-      {/* {timediff} secs old */}
-    </div>
+          <Grid item xs={4}>
+            <Temperature>
+              {properties.temp_water.toFixed(1)}
+              °C
+            </Temperature>
+            <Moment className="text-truncate">{moment(datea).fromNow()}</Moment>
+          </Grid>
+        </Grid>
+      </AccordionSummary>
+      <AccordionDetails>
+        <PlotyGraph2 item={id}/>
+      </AccordionDetails>
+    </Accordion>
   );
 }
 
