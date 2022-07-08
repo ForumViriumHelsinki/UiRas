@@ -1,10 +1,12 @@
 import * as React from "react";
 
 import styled from "@emotion/styled";
-import Pool from "@mui/icons-material/Pool";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
+import IconButton from "@mui/material/IconButton";
+import Pool from "@mui/icons-material/Pool";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
@@ -29,7 +31,7 @@ function ResponsiveAppBar() {
       {infoDialogOpen && <InfoDialog handleClose={handleCloseInfo}/>}
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Pool sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <Pool sx={{ display: "flex", mr: 1 }}/>
           <Typography
             variant="h6"
             noWrap
@@ -37,7 +39,7 @@ function ResponsiveAppBar() {
             href="/"
             sx={{
               mr: 2,
-              display: { xs: "none", md: "flex" },
+              display: "flex",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
@@ -46,41 +48,23 @@ function ResponsiveAppBar() {
           >
             UiRaS
           </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <a onClick={handleOpenInfo}>Info</a>
+          <Box sx={{ flexGrow: 1 }}>
+            <Button
+              onClick={handleOpenInfo}
+              sx={{ my: 2, color: 'white', display: 'block' }}
+            >
+              Info
+            </Button>
           </Box>
-          <Pool sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            UiRaS
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <a onClick={handleOpenInfo}>Info</a>
-          </Box>
-          <Box sx={{ flexGrow: 0 }}>
-            <a href="https://forumvirium.fi">
-              <FvhLogo
-                src="images/FORUM_VIRIUM_logo_white.png"
-              />
-            </a>
-          </Box>
+          <IconButton href="https://forumvirium.fi">
+            <FvhLogo
+              src="images/FORUM_VIRIUM_logo_white.png"
+            />
+          </IconButton>
         </Toolbar>
       </Container>
     </AppBar>
   );
 }
+
 export default ResponsiveAppBar;
