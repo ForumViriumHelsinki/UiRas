@@ -9,6 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import Pool from "@mui/icons-material/Pool";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import ForumViriumLogo from "../images/FORUM_VIRIUM_logo_white.png";
 
 import InfoDialog from "./InfoDialog";
 
@@ -57,7 +58,7 @@ function ResponsiveAppBar() {
             </Button>
           </Box>
           <IconButton href="https://forumvirium.fi">
-            <FvhLogo src="images/FORUM_VIRIUM_logo_white.png" />
+            <FvhLogo src={ForumViriumLogo} />
           </IconButton>
         </Toolbar>
       </Container>
