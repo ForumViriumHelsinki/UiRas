@@ -5,11 +5,12 @@ import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Grid from "@mui/material/Grid";
+import React from "react";
 
-import { useQueryGetUiras } from "./api";
 import { PlotyGraph2 } from "./PlotyGraph2";
-import { GetUirasResponse, UirasFeature } from "./types";
 import TimeSince from "./TimeSince";
+import { useQueryGetUiras } from "./api";
+import { GetUirasResponse, UirasFeature } from "./types";
 
 /**
  * Styled strings in grid rows

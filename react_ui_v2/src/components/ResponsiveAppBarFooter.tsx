@@ -1,10 +1,9 @@
-import * as React from "react";
-
 import styled from "@emotion/styled";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
+import * as React from "react";
 
 import HelsinkiLogo from "../images/Helsinki_logo-w.svg";
 import EULogo from "../images/eu_flag.svg";

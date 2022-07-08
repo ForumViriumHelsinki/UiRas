@@ -1,5 +1,6 @@
 import { formatDuration, intervalToDuration, parseISO } from "date-fns";
 import fi from "date-fns/locale/fi";
+import React from "react";
 import usePeriodicUpdate from "../hooks/usePeriodicUpdate";
 
 export default function TimeSince({ iso8601 }: { iso8601: string }) {
