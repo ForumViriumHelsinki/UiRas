@@ -3,9 +3,9 @@ import { CircularProgress } from "@mui/material";
 import React from "react";
 import type { PlotParams } from "react-plotly.js";
 
+import { UirasV2 } from "../types/UiRaSSingleV2";
 import Plot from "./MinPlotly";
 import { useQueryGetUirasDataV2 } from "./api";
-import { UirasV2 } from "./types";
 
 type PlotlyData = PlotParams["data"];
 type PlotlyLayout = PlotParams["layout"];

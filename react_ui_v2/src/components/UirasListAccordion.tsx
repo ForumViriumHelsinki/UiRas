@@ -7,10 +7,10 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import Grid from "@mui/material/Grid";
 import React from "react";
 
+import { GetUirasResponse, UirasFeature } from "../types/UiRaSGeoJSON";
 import { PlotyGraph2 } from "./PlotyGraph2";
 import TimeSince from "./TimeSince";
 import { useQueryGetUiras } from "./api";
-import { GetUirasResponse, UirasFeature } from "./types";
 
 /**
  * Styled strings in grid rows
