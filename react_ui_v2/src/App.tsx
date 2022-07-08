@@ -7,7 +7,7 @@ import { CssBaseline } from "@mui/material";
 
 const theme = createTheme({
   typography: {
-    fontSize: 20,
+    fontSize: 14,
     allVariants: {
       fontFamily: "Open Sans",
       textTransform: "none",

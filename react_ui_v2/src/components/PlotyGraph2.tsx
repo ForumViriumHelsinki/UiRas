@@ -42,6 +42,7 @@ function getLayout(): Partial<PlotlyLayout> {
       ],
       hoverformat: "%d.%m.%Y %H:%M",
       gridcolor: "#ccc",
+      range: ["2022-06-01", new Date()],
     },
     yaxis: {
       tickangle: "auto",
@@ -90,11 +91,7 @@ export function PlotyGraph2({ item }: { item: string }): JSX.Element {
     }
     return (
       <GraphContainer>
-        <Plot
-          data={data}
-          layout={getLayout()}
-          style={{ width: "100%", height: "100%" }}
-        />
+        <Plot data={data} layout={getLayout()} style={{ width: "100%", height: "100%" }} />
       </GraphContainer>
     );
   }
