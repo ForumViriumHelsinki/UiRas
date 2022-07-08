@@ -1,11 +1,9 @@
 import * as React from "react";
 
 import styled from "@emotion/styled";
-// import Map from '@mui/icons-material/Map';
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-// import Tooltip from '@mui/material/Tooltip';
 import Toolbar from "@mui/material/Toolbar";
 
 // https://forumvirium.fi/wp-content/themes/forumvirium-child/static/images/footer-bg-wavy.svg

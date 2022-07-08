@@ -17,16 +17,13 @@ function getLayout(): Partial<PlotlyLayout> {
   return {
     margin: { l: 36, r: 10, t: 10, b: 64 },
     title: "",
-    // autosize: true,
     legend: { orientation: "h", bgcolor: "transparent", y: -0.2 },
     paper_bgcolor: "rgba(255,255,255,1.0)",
     plot_bgcolor: "rgba(255,255,255,0.0)",
     xaxis: {
-      // autotick: false,
       ticks: "outside",
       tickangle: "auto",
       tickcolor: "#000",
-      // tickformat: "%d.%m.\n %Y",
       // https://plotly.com/javascript/tick-formatting/#tickformatstops-to-customize-for-different-zoom-levels
       tickformatstops: [
         {
@@ -46,7 +43,6 @@ function getLayout(): Partial<PlotlyLayout> {
       gridcolor: "#ccc",
     },
     yaxis: {
-      // autotick: false,
       tickangle: "auto",
       tickcolor: "#000",
       gridcolor: "#ccc",
@@ -87,7 +83,6 @@ function convertData(sensordata: UirasV2): PlotlyData {
 export function PlotyGraph2({ item }: { item: string }): JSX.Element {
   const uirasDataV2Query = useQueryGetUirasDataV2(item);
   if (uirasDataV2Query.isSuccess) {
-    // console.log(uirasDataV2Query.data); // contains the data
     const data = convertData(uirasDataV2Query.data);
     if (data.length == 0) {
       return <div>Virhe ladattaessa kuvaajaa</div>;

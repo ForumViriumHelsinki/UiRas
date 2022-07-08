@@ -22,21 +22,6 @@ export type FeatureProperties = {
   links: FeatureLinks;
 };
 
-const links: FeatureLinks = {
-  json_2w: {
-    type: "application/json",
-    rel: "data",
-    title: "Data for 2 weeks in JSON format",
-    href: "https://example.com/data_2w.json",
-  },
-  json_1y: {
-    type: "application/json",
-    rel: "data",
-    title: "Data for 1 year in JSON format",
-    href: "https://example.com/data_1y.json",
-  },
-};
-
 export type GeometryCoordinates = {
   coordinates: [number, number];
 };
