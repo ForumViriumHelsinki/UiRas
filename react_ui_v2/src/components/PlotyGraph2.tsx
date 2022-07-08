@@ -1,10 +1,11 @@
-import Plot, { PlotParams } from "react-plotly.js";
+import type { PlotParams } from "react-plotly.js";
 
 import styled from "@emotion/styled";
 import { CircularProgress } from "@mui/material";
 
 import { useQueryGetUirasDataV2 } from "./api";
 import { UirasV2 } from "./types";
+import Plot from "./MinPlotly";
 
 type PlotlyData = PlotParams["data"];
 type PlotlyLayout = PlotParams["layout"];
