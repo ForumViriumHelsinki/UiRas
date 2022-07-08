@@ -1,7 +1,6 @@
 import "moment/locale/fi";
 
 import moment from "moment";
-import { useState } from "react";
 import { Row } from "reactstrap";
 import useSWR from "swr";
 
@@ -16,7 +15,7 @@ import Typography from "@mui/material/Typography";
 
 import { useQueryGetUiras } from "./api";
 import { PlotyGraph2 } from "./PlotyGraph2";
-import { GetUirasResponse, UiRasDataResponseV1, UirasFeature } from "./types";
+import { GetUirasResponse, UirasFeature } from "./types";
 
 /**
  * Styled strings in grid rows

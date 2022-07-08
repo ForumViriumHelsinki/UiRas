@@ -16,7 +16,7 @@ import styled from "@emotion/styled";
 import { CircularProgress } from "@mui/material";
 
 import { useQueryGetUirasDataV2 } from "./api";
-import { SensorDataProps, UirasV2 } from "./types";
+import { UirasV2 } from "./types";
 
 const GraphContainer = styled.div(() => ({
   width: "100%",

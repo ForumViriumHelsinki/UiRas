@@ -1,5 +1,3 @@
-import { UiRasDataResponseV1 } from "./types";
-
 import Plot from "react-plotly.js";
 
 //export function SensorData(data: UiRasDataResponseV1): JSX.Element {
