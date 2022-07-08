@@ -1,7 +1,6 @@
 import "moment/locale/fi";
 
 import moment from "moment";
-import { Row } from "reactstrap";
 import useSWR from "swr";
 
 import styled from "@emotion/styled";
@@ -59,9 +58,8 @@ function Slot({ id, properties, geometry }: UirasFeature): JSX.Element {
   // const [graphData, setGraphData] = useState("");
 
   // const timediff = -moment(datea).diff(new Date()) / 1000;
-  // TODO: get rid of Row from reactstrap
   return (
-    <Row className="border">
+    <div>
       <Accordion TransitionProps={{ unmountOnExit: true }} key={id}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Grid container direction="row" justifyContent="space-between">
@@ -87,7 +85,7 @@ function Slot({ id, properties, geometry }: UirasFeature): JSX.Element {
         </AccordionDetails>
       </Accordion>
       {/* {timediff} secs old */}
-    </Row>
+    </div>
   );
 }
 
