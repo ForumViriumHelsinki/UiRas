@@ -1,16 +1,4 @@
-/* 
-import { Col, Container, Row } from "reactstrap";
-
-import ResponsiveAppBar from "./ResponsiveAppBar";
-import ResponsiveAppBarFooter from "./ResponsiveAppBarFooter";
-import UirasListAccordion from "./UirasListAccordion";
- */
-
-/*
-yarn add @types/plotly.js @types/react-plotly.js plotly.js react-plotly.js react-plotlyjs-ts
-*/
-
-import Plot from "react-plotly.js";
+import Plot, {PlotParams} from "react-plotly.js";
 
 import styled from "@emotion/styled";
 import { CircularProgress } from "@mui/material";
@@ -18,11 +6,14 @@ import { CircularProgress } from "@mui/material";
 import { useQueryGetUirasDataV2 } from "./api";
 import { UirasV2 } from "./types";
 
+type PlotlyData = PlotParams["data"];
+type PlotlyLayout = PlotParams["layout"];
+
 const GraphContainer = styled.div(() => ({
   width: "100%",
 }));
 
-function getLayout() {
+function getLayout(): Partial<PlotlyLayout> {
   return {
     margin: { l: 36, r: 10, t: 10, b: 64 },
     title: "",
@@ -64,8 +55,8 @@ function getLayout() {
   };
 }
 
-function convertData(sensordata: UirasV2) {
-  // Why this is empty in Eiranranta and Hanikka?
+function convertData(sensordata: UirasV2): PlotlyData {
+  // TODO: Why this is empty in Eiranranta and Hanikka?
   if (sensordata.properties === undefined) {
     return [];
   }
@@ -101,10 +92,9 @@ export function PlotyGraph2({ item }: { item: string }): JSX.Element {
     if (data.length == 0) {
       return <div>Virhe ladattaessa kuvaajaa</div>;
     }
-    const layout = getLayout();
     return (
       <GraphContainer>
-        <Plot data={data} layout={layout} style={{ width: "100%", height: "100%" }} />
+        <Plot data={data} layout={getLayout()} style={{ width: "100%", height: "100%" }}/>
       </GraphContainer>
     );
   }
