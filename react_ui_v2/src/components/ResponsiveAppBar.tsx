@@ -8,16 +8,25 @@ import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
-import CustomizedDialogs from "./CustomizedDialogs";
+import InfoDialog from "./InfoDialog";
 
 const FvhLogo = styled.img(() => ({
   maxHeight: "50px",
 }));
 
 function ResponsiveAppBar() {
+  const [infoDialogOpen, setInfoDialogOpen] = React.useState(false);
+
+  const handleOpenInfo = () => {
+    setInfoDialogOpen(true);
+  };
+  const handleCloseInfo = () => {
+    setInfoDialogOpen(false);
+  };
 
   return (
     <AppBar position="static" sx={{ bgcolor: "rgb(236,94,36)" }}>
+      {infoDialogOpen && <InfoDialog handleClose={handleCloseInfo}/>}
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Pool sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
@@ -39,7 +48,7 @@ function ResponsiveAppBar() {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <CustomizedDialogs />
+            <a onClick={handleOpenInfo}>Info</a>
           </Box>
           <Pool sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
@@ -60,7 +69,7 @@ function ResponsiveAppBar() {
             UiRaS
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <CustomizedDialogs />
+            <a onClick={handleOpenInfo}>Info</a>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <a href="https://forumvirium.fi">
