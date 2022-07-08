@@ -9,9 +9,7 @@ export type FeatureLink = {
   href: string;
 };
 
-type Kissa<Koira> = {};
-
-type FeatureLinks = Kissa<FeatureLink>;
+type FeatureLinks = Record<string, FeatureLink>;
 
 export type FeatureProperties = {
   battery: number;
