@@ -18,7 +18,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export interface DialogTitleProps {
+interface DialogTitleProps {
   id: string;
   children?: React.ReactNode;
   onClose: () => void;
@@ -41,30 +41,42 @@ const BootstrapDialogTitle = (props: DialogTitleProps) => {
             color: (theme) => theme.palette.grey[500],
           }}
         >
-          <CloseIcon/>
+          <CloseIcon />
         </IconButton>
       ) : null}
     </DialogTitle>
   );
 };
 
-export default function InfoDialog({ handleClose }: { handleClose: () => void }) {
+interface InfoDialogProps {
+  handleClose: () => void;
+}
+
+export default function InfoDialog({ handleClose }: InfoDialogProps) {
   return (
-    <BootstrapDialog onClose={handleClose} aria-labelledby="customized-dialog-title" open>
+    <BootstrapDialog
+      onClose={handleClose}
+      aria-labelledby="customized-dialog-title"
+      open
+    >
       <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
         Tietoa uimarantasensoreista
       </BootstrapDialogTitle>
       <DialogContent dividers>
         <Typography gutterBottom>
-          UiRaS-uimarantasensorit mittaavat veden lämpötilaa parissa kymmenessä mittauspisteessä pääkaupunkiseudulla.
-          Mittaustiedot julkaistaan tällä sivulla ja lisäksi avoimena datana kenen tahansa kiinnostuneen käyttöön.
+          UiRaS-uimarantasensorit mittaavat veden lämpötilaa parissa kymmenessä
+          mittauspisteessä pääkaupunkiseudulla. Mittaustiedot julkaistaan tällä
+          sivulla ja lisäksi avoimena datana kenen tahansa kiinnostuneen
+          käyttöön.
         </Typography>
         <Typography gutterBottom>
           <strong>Huom!</strong> Tämä on uusi <strong>uiras.fvh.io</strong>
-          -sivu, jota kehitetään aktiivisesti lähiviikkoina. Voit ehdottaa uusia toiminnallisuuksia ja lähettää
-          palautetta uimarantasensoreista{" "}
+          -sivu, jota kehitetään aktiivisesti lähiviikkoina. Voit ehdottaa uusia
+          toiminnallisuuksia ja lähettää palautetta uimarantasensoreista
           <strong>
-            <a href="https://forumvirium.fi/uiraspalaute/">palautelomakkeella</a>
+            <a href="https://forumvirium.fi/uiraspalaute/">
+              palautelomakkeella
+            </a>
           </strong>
           .
         </Typography>
@@ -85,14 +97,13 @@ export default function InfoDialog({ handleClose }: { handleClose: () => void })
           </ul>
         </Typography>
         <Typography gutterBottom>
-          UiRaS on Forum Virium Helsingin ja Helsingin kaupungin vuonna 2020 alkanut kokeilu. Vanha nettisivu löytyy
-          vielä hetken aikaa osoitteessa <a href="https://uiras-v1.fvh.io/">https://uiras-v1.fvh.io/</a>.
+          UiRaS on Forum Virium Helsingin ja Helsingin kaupungin vuonna 2020
+          alkanut kokeilu. Vanha nettisivu löytyy vielä hetken aikaa osoitteessa
+          <a href="https://uiras-v1.fvh.io/">https://uiras-v1.fvh.io/</a>.
         </Typography>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>
-          Sulje
-        </Button>
+        <Button onClick={handleClose}>Sulje</Button>
       </DialogActions>
     </BootstrapDialog>
   );

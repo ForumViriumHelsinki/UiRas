@@ -19,7 +19,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <UirasUI/>
+      <UirasUI />
     </ThemeProvider>
   );
 }

@@ -41,8 +41,6 @@ export type GetUirasResponse = {
   features: UirasFeature[];
 };
 
-
-
 /**
  * Types for UiRaS measurement data V1
  */
@@ -109,157 +107,155 @@ export type SensorDataProps = {
   };
 };
 
-
 /**
- * UiRaS all GeoJSON v2 
+ * UiRaS all GeoJSON v2
  * Generated using https://transform.tools/json-to-typescript
  */
 
 export interface UirasAllV2 {
-  type: string
-  meta: Meta
-  features: Feature[]
+  type: string;
+  meta: Meta;
+  features: Feature[];
 }
 
 export interface Meta {
-  created_at: string
-  comment: string
-  contact: string
+  created_at: string;
+  comment: string;
+  contact: string;
 }
 
 export interface Feature {
-  type: string
-  id: string
-  geometry: Geometry
-  properties: Properties
+  type: string;
+  id: string;
+  geometry: Geometry;
+  properties: Properties;
 }
 
 export interface Geometry {
-  type: string
-  coordinates: number[]
+  type: string;
+  coordinates: number[];
 }
 
 export interface Properties {
-  name: string
-  location: string
-  district: string
-  created_at: string
-  temp_water: number
-  temp_in: number
-  battery: number
-  time: string
-  links: Links
+  name: string;
+  location: string;
+  district: string;
+  created_at: string;
+  temp_water: number;
+  temp_in: number;
+  battery: number;
+  time: string;
+  links: Links;
 }
 
 export interface Links {
-  json: Json
-  geojson: Geojson
-  servicemap?: Servicemap
-  site?: Site
+  json: Json;
+  geojson: Geojson;
+  servicemap?: Servicemap;
+  site?: Site;
 }
 
 export interface Json {
-  type: string
-  rel: string
-  title: string
-  href: string
+  type: string;
+  rel: string;
+  title: string;
+  href: string;
 }
 
 export interface Geojson {
-  type: string
-  rel: string
-  title: string
-  href: string
+  type: string;
+  rel: string;
+  title: string;
+  href: string;
 }
 
 export interface Servicemap {
-  type: string
-  rel: string
-  title: string
-  href: string
+  type: string;
+  rel: string;
+  title: string;
+  href: string;
 }
 
 export interface Site {
-  type: string
-  rel: string
-  title: string
-  href: string
+  type: string;
+  rel: string;
+  title: string;
+  href: string;
 }
 
-
 /**
- * UiRaS single GeoJSON v2 
+ * UiRaS single GeoJSON v2
  * Generated using https://transform.tools/json-to-typescript
  */
 
 export interface UirasV2 {
-  type: string
-  id: string
-  geometry: Geometry
-  properties: Properties
+  type: string;
+  id: string;
+  geometry: Geometry;
+  properties: Properties;
 }
 
 export interface Geometry {
-  type: string
-  coordinates: number[]
+  type: string;
+  coordinates: number[];
 }
 
 export interface Properties {
-  name: string
-  location: string
-  district: string
-  created_at: string
-  links: Links
-  data: Data
+  name: string;
+  location: string;
+  district: string;
+  created_at: string;
+  links: Links;
+  data: Data;
 }
 
 export interface Links {
-  json: Json
-  geojson: Geojson
+  json: Json;
+  geojson: Geojson;
 }
 
 export interface Json {
-  type: string
-  rel: string
-  title: string
-  href: string
+  type: string;
+  rel: string;
+  title: string;
+  href: string;
 }
 
 export interface Geojson {
-  type: string
-  rel: string
-  title: string
-  href: string
+  type: string;
+  rel: string;
+  title: string;
+  href: string;
 }
 
 export interface Data {
-  raw: Raw[]
-  h3: H3[]
-  d1: D1[]
+  raw: Raw[];
+  h3: H3[];
+  d1: D1[];
 }
 
 export interface Raw {
-  time: string
-  temp_water: number
-  temp_in: number
-  rssi: number
-  batt: number
+  time: string;
+  temp_water: number;
+  temp_in: number;
+  rssi: number;
+  batt: number;
 }
 
 export interface H3 {
-  time: string
-  temp_water: number
-  temp_in: number
-  rssi: number
-  batt: number
+  time: string;
+  temp_water: number;
+  temp_in: number;
+  rssi: number;
+  batt: number;
 }
 
 export interface D1 {
-  time: string
-  temp_water_min: number
-  temp_water_max: number
-  temp_water: number
-  temp_in: number
-  rssi: number
-  batt: number
+  time: string;
+  temp_water_min: number;
+  temp_water_max: number;
+  temp_water: number;
+  temp_in: number;
+  rssi: number;
+  batt: number;
 }

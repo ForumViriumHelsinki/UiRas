@@ -7,9 +7,9 @@ import UirasListAccordion from "./UirasListAccordion";
 export function UirasUI(): JSX.Element {
   return (
     <>
-      <ResponsiveAppBar/>
-      <UirasListAccordion/>
-      <ResponsiveAppBarFooter/>
+      <ResponsiveAppBar />
+      <UirasListAccordion />
+      <ResponsiveAppBarFooter />
     </>
   );
 }

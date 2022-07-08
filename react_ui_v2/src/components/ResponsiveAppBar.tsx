@@ -28,10 +28,10 @@ function ResponsiveAppBar() {
 
   return (
     <AppBar position="static" sx={{ bgcolor: "rgb(236,94,36)" }}>
-      {infoDialogOpen && <InfoDialog handleClose={handleCloseInfo}/>}
+      {infoDialogOpen && <InfoDialog handleClose={handleCloseInfo} />}
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Pool sx={{ display: "flex", mr: 1 }}/>
+          <Pool sx={{ display: "flex", mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -51,15 +51,13 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1 }}>
             <Button
               onClick={handleOpenInfo}
-              sx={{ my: 2, color: 'white', display: 'block' }}
+              sx={{ my: 2, color: "white", display: "block" }}
             >
               Info
             </Button>
           </Box>
           <IconButton href="https://forumvirium.fi">
-            <FvhLogo
-              src="images/FORUM_VIRIUM_logo_white.png"
-            />
+            <FvhLogo src="images/FORUM_VIRIUM_logo_white.png" />
           </IconButton>
         </Toolbar>
       </Container>

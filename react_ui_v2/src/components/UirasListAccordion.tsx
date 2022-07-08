@@ -40,7 +40,7 @@ function Slot({ id, properties }: UirasFeature): JSX.Element {
   const datea = moment(properties.time);
   return (
     <Accordion TransitionProps={{ unmountOnExit: true }} key={id}>
-      <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Grid container direction="row" justifyContent="space-between">
           <Grid item xs={8} p={0}>
             <UirasName className="text-truncate">{properties.name}</UirasName>
@@ -60,7 +60,7 @@ function Slot({ id, properties }: UirasFeature): JSX.Element {
         </Grid>
       </AccordionSummary>
       <AccordionDetails>
-        <PlotyGraph2 item={id}/>
+        <PlotyGraph2 item={id} />
       </AccordionDetails>
     </Accordion>
   );
@@ -72,7 +72,12 @@ function SlotList({ features }: GetUirasResponse): JSX.Element {
   return (
     <>
       {features.map((data) => (
-        <Slot key={data.id} id={data.id} properties={data.properties} geometry={data.geometry}/>
+        <Slot
+          key={data.id}
+          id={data.id}
+          properties={data.properties}
+          geometry={data.geometry}
+        />
       ))}
     </>
   );
