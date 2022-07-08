@@ -1,12 +1,12 @@
 type Ok<T> = {
-  ok: true
-  value: T
-}
+  ok: true;
+  value: T;
+};
 
 type Fail = {
-  ok: false
-  error: Error
-}
+  ok: false;
+  error: Error;
+};
 
 export function ok<T>(value: T): Ok<T> {
   return {
@@ -22,10 +22,10 @@ export function fail(error: Error): Fail {
   };
 }
 
-export type Result<T> = Ok<T> | Fail
+export type Result<T> = Ok<T> | Fail;
 
 export async function withResult<T>(
-  callback: () => Promise<T>,
+  callback: () => Promise<T>
 ): Promise<Result<T>> {
   try {
     return ok(await callback());
@@ -34,11 +34,11 @@ export async function withResult<T>(
       return fail(e);
     }
 
-    if (typeof e === 'string') {
+    if (typeof e === "string") {
       return fail(new Error(e));
     }
 
-    return fail(new Error('unknown error occurred'));
+    return fail(new Error("unknown error occurred"));
   }
 }
 

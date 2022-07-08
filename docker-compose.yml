@@ -2,8 +2,8 @@ version: '3.7'
 
 services:
   react:
-    build: ./react_ui
+    build: ./react_ui_v2
     command: "yarn; yarn build"
     volumes:
-      - ./react_ui/build:/app/build
-      - ./react_ui/src:/app/src
+      - ./react_ui_v2/build:/app/build
+      - ./react_ui_v2/src:/app/src

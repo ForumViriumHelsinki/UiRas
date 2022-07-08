@@ -5,9 +5,9 @@ To start UI development:
 * Run:
 ```
 npm install -g yarn
-cd react_ui2
+cd react_ui_v2
 yarn
 yarn start
 ```
-This should install all dependencies in react_ui/node_modules and start a react dev environment
+This should install all dependencies in react_ui_v2/node_modules and start a react dev environment
 serving the UI app at localhost:3000 or a nearby available port.

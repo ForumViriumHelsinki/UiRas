@@ -1,41 +1,29 @@
-/* 
-import { Col, Container, Row } from "reactstrap";
-
-import ResponsiveAppBar from "./ResponsiveAppBar";
-import ResponsiveAppBarFooter from "./ResponsiveAppBarFooter";
-import UirasListAccordion from "./UirasListAccordion";
- */
-
-/*
-yarn add @types/plotly.js @types/react-plotly.js plotly.js react-plotly.js react-plotlyjs-ts
-*/
-
-import Plot from "react-plotly.js";
+import Plot, { PlotParams } from "react-plotly.js";
 
 import styled from "@emotion/styled";
 import { CircularProgress } from "@mui/material";
 
 import { useQueryGetUirasDataV2 } from "./api";
-import { SensorDataProps, UirasV2 } from "./types";
+import { UirasV2 } from "./types";
+
+type PlotlyData = PlotParams["data"];
+type PlotlyLayout = PlotParams["layout"];
 
 const GraphContainer = styled.div(() => ({
   width: "100%",
 }));
 
-function getLayout() {
+function getLayout(): Partial<PlotlyLayout> {
   return {
     margin: { l: 36, r: 10, t: 10, b: 64 },
     title: "",
-    // autosize: true,
     legend: { orientation: "h", bgcolor: "transparent", y: -0.2 },
     paper_bgcolor: "rgba(255,255,255,1.0)",
     plot_bgcolor: "rgba(255,255,255,0.0)",
     xaxis: {
-      // autotick: false,
       ticks: "outside",
       tickangle: "auto",
       tickcolor: "#000",
-      // tickformat: "%d.%m.\n %Y",
       // https://plotly.com/javascript/tick-formatting/#tickformatstops-to-customize-for-different-zoom-levels
       tickformatstops: [
         {
@@ -55,7 +43,6 @@ function getLayout() {
       gridcolor: "#ccc",
     },
     yaxis: {
-      // autotick: false,
       tickangle: "auto",
       tickcolor: "#000",
       gridcolor: "#ccc",
@@ -64,8 +51,8 @@ function getLayout() {
   };
 }
 
-function convertData(sensordata: UirasV2) {
-  // Why this is empty in Eiranranta and Hanikka?
+function convertData(sensordata: UirasV2): PlotlyData {
+  // TODO: Why this is empty in Eiranranta and Hanikka?
   if (sensordata.properties === undefined) {
     return [];
   }
@@ -96,15 +83,17 @@ function convertData(sensordata: UirasV2) {
 export function PlotyGraph2({ item }: { item: string }): JSX.Element {
   const uirasDataV2Query = useQueryGetUirasDataV2(item);
   if (uirasDataV2Query.isSuccess) {
-    // console.log(uirasDataV2Query.data); // contains the data
     const data = convertData(uirasDataV2Query.data);
     if (data.length == 0) {
       return <div>Virhe ladattaessa kuvaajaa</div>;
     }
-    const layout = getLayout();
     return (
       <GraphContainer>
-        <Plot data={data} layout={layout} style={{ width: "100%", height: "100%" }} />
+        <Plot
+          data={data}
+          layout={getLayout()}
+          style={{ width: "100%", height: "100%" }}
+        />
       </GraphContainer>
     );
   }
