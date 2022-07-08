@@ -17,7 +17,6 @@ const Logo = styled.img(() => ({
   margin: "5px",
 }));
 
-
 function ResponsiveAppBarFooter() {
   return (
     <AppBar
