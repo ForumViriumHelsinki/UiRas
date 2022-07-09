@@ -2,7 +2,8 @@ import axios from "axios";
 import { useQuery } from "react-query";
 
 import { Result, unwrapResult, withResult } from "../result";
-import { GetUirasResponse, UirasV2 } from "./types";
+import { GetUirasResponse } from "../types/UiRaSGeoJSON";
+import { UirasV2 } from "../types/UiRaSSingleV2";
 
 /**
  * Get uiras2_v2.geojson
