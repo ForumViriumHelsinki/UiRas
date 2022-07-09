@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ErrorOutlineRoundedIcon from "@mui/icons-material/ErrorOutlineRounded";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { CircularProgress } from "@mui/material";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -11,7 +11,6 @@ import React from "react";
 import { GetUirasResponse, UirasFeature } from "../types/UiRaSGeoJSON";
 import { PlotyGraph2 } from "./PlotyGraph2";
 import TimeSince from "./TimeSince";
-import React from "react";
 import { useQueryGetUiras } from "./api";
 
 /**
