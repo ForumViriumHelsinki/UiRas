@@ -4,6 +4,7 @@ import moment from "moment";
 
 import styled from "@emotion/styled";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ErrorOutlineRoundedIcon from "@mui/icons-material/ErrorOutlineRounded";
 import { CircularProgress } from "@mui/material";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -36,6 +37,14 @@ const Moment = styled.div(() => ({
   fontSize: "60%",
 }));
 
+const UirasBroken = styled.div(() => ({
+  fontSize: "100%",
+  fontWeight: "bold",
+  border: "red 2px dotted",
+  backgroundColor: "yellow",
+  padding: "5px",
+}));
+
 function Slot({ id, properties }: UirasFeature): JSX.Element {
   const datea = moment(properties.time);
   return (
@@ -54,12 +63,21 @@ function Slot({ id, properties }: UirasFeature): JSX.Element {
             <Temperature>
               {properties.temp_water.toFixed(1)}
               °C
+              {properties.temp_water < -1.0 ? <ErrorOutlineRoundedIcon /> : ""}
             </Temperature>
             <Moment className="text-truncate">{moment(datea).fromNow()}</Moment>
           </Grid>
         </Grid>
       </AccordionSummary>
       <AccordionDetails>
+        {properties.temp_water < -1.0 ? (
+          <UirasBroken>
+            Mittari on rikki. Tämä on tiedossa eikä siitä tarvitse erikseen
+            ilmoittaa, kiitos.
+          </UirasBroken>
+        ) : (
+          ""
+        )}
         <PlotyGraph2 item={id} />
       </AccordionDetails>
     </Accordion>
