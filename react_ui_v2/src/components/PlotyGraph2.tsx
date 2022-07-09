@@ -91,7 +91,11 @@ export function PlotyGraph2({ item }: { item: string }): JSX.Element {
     }
     return (
       <GraphContainer>
-        <Plot data={data} layout={getLayout()} style={{ width: "100%", height: "100%" }} />
+        <Plot
+          data={data}
+          layout={getLayout()}
+          style={{ width: "100%", height: "100%" }}
+        />
       </GraphContainer>
     );
   }
