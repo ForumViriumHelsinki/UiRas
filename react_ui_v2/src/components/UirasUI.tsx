@@ -1,5 +1,3 @@
-import "moment/locale/fi";
-
 import ResponsiveAppBar from "./ResponsiveAppBar";
 import ResponsiveAppBarFooter from "./ResponsiveAppBarFooter";
 import UirasListAccordion from "./UirasListAccordion";
