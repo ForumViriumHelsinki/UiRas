@@ -10,6 +10,7 @@ import { useQueryGetUiras } from "./api";
 import { PlotyGraph2 } from "./PlotyGraph2";
 import { GetUirasResponse, UirasFeature } from "./types";
 import TimeSince from "./TimeSince";
+import React from "react";
 
 /**
  * Styled strings in grid rows
@@ -65,15 +66,21 @@ function Slot({ id, properties }: UirasFeature): JSX.Element {
 }
 
 function SlotList({ features }: GetUirasResponse): JSX.Element {
-  features.sort((a, b) => a.properties.name.localeCompare(b.properties.name));
+  const sortedFeatures = React.useMemo(
+    () =>
+      [...features].sort((a, b) =>
+        a.properties.name.localeCompare(b.properties.name)
+      ),
+    [features]
+  );
   return (
     <>
-      {features.map((data) => (
+      {sortedFeatures.map((feature) => (
         <Slot
-          key={data.id}
-          id={data.id}
-          properties={data.properties}
-          geometry={data.geometry}
+          key={feature.id}
+          id={feature.id}
+          properties={feature.properties}
+          geometry={feature.geometry}
         />
       ))}
     </>
