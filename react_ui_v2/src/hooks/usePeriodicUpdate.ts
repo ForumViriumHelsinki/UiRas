@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function usePeriodicUpdate(interval) {
+export default function usePeriodicUpdate(interval: number) {
   const [counter, setCounter] = React.useState(0);
   React.useEffect(() => {
     const iv = setInterval(() => {

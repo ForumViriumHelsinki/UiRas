@@ -1,16 +1,15 @@
-import * as React from "react";
-
 import styled from "@emotion/styled";
+import Pool from "@mui/icons-material/Pool";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
-import Pool from "@mui/icons-material/Pool";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import ForumViriumLogo from "../images/FORUM_VIRIUM_logo_white.png";
+import * as React from "react";
 
+import ForumViriumLogo from "../images/FORUM_VIRIUM_logo_white.png";
 import InfoDialog from "./InfoDialog";
 
 const FvhLogo = styled.img(() => ({
