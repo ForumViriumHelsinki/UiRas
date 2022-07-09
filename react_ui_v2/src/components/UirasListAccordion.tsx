@@ -6,11 +6,13 @@ import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Grid from "@mui/material/Grid";
+import React from "react";
 
-import { useQueryGetUiras } from "./api";
+import { GetUirasResponse, UirasFeature } from "../types/UiRaSGeoJSON";
 import { PlotyGraph2 } from "./PlotyGraph2";
-import { GetUirasResponse, UirasFeature } from "./types";
 import TimeSince from "./TimeSince";
+import React from "react";
+import { useQueryGetUiras } from "./api";
 
 /**
  * Styled strings in grid rows
@@ -83,15 +85,21 @@ function Slot({ id, properties }: UirasFeature): JSX.Element {
 }
 
 function SlotList({ features }: GetUirasResponse): JSX.Element {
-  features.sort((a, b) => a.properties.name.localeCompare(b.properties.name));
+  const sortedFeatures = React.useMemo(
+    () =>
+      [...features].sort((a, b) =>
+        a.properties.name.localeCompare(b.properties.name)
+      ),
+    [features]
+  );
   return (
     <>
-      {features.map((data) => (
+      {sortedFeatures.map((feature) => (
         <Slot
-          key={data.id}
-          id={data.id}
-          properties={data.properties}
-          geometry={data.geometry}
+          key={feature.id}
+          id={feature.id}
+          properties={feature.properties}
+          geometry={feature.geometry}
         />
       ))}
     </>

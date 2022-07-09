@@ -1,9 +1,8 @@
+import { CssBaseline } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import React from "react";
 
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-
 import { UirasUI } from "./components/UirasUI";
-import { CssBaseline } from "@mui/material";
 
 const theme = createTheme({
   typography: {
