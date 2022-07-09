@@ -1,7 +1,3 @@
-import "moment/locale/fi";
-
-import moment from "moment";
-
 import styled from "@emotion/styled";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ErrorOutlineRoundedIcon from "@mui/icons-material/ErrorOutlineRounded";
@@ -14,6 +10,7 @@ import Grid from "@mui/material/Grid";
 import { useQueryGetUiras } from "./api";
 import { PlotyGraph2 } from "./PlotyGraph2";
 import { GetUirasResponse, UirasFeature } from "./types";
+import TimeSince from "./TimeSince";
 
 /**
  * Styled strings in grid rows
@@ -46,7 +43,6 @@ const UirasBroken = styled.div(() => ({
 }));
 
 function Slot({ id, properties }: UirasFeature): JSX.Element {
-  const datea = moment(properties.time);
   return (
     <Accordion TransitionProps={{ unmountOnExit: true }} key={id}>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -65,7 +61,9 @@ function Slot({ id, properties }: UirasFeature): JSX.Element {
               °C
               {properties.temp_water < -1.0 ? <ErrorOutlineRoundedIcon /> : ""}
             </Temperature>
-            <Moment className="text-truncate">{moment(datea).fromNow()}</Moment>
+            <Moment className="text-truncate">
+              <TimeSince iso8601={properties.time} />
+            </Moment>
           </Grid>
         </Grid>
       </AccordionSummary>
@@ -85,7 +83,6 @@ function Slot({ id, properties }: UirasFeature): JSX.Element {
 }
 
 function SlotList({ features }: GetUirasResponse): JSX.Element {
-  moment.locale("fi");
   features.sort((a, b) => a.properties.name.localeCompare(b.properties.name));
   return (
     <>
