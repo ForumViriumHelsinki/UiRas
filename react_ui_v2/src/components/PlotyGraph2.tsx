@@ -5,7 +5,7 @@ import type { PlotParams } from "react-plotly.js";
 
 import { UirasV2 } from "../types/UiRaSSingleV2";
 import Plot from "./MinPlotly";
-import { useQueryGetUirasDataV2 } from "./api";
+import { usePerDeviceData } from "./api";
 
 type PlotlyData = PlotParams["data"];
 type PlotlyLayout = PlotParams["layout"];
@@ -82,28 +82,28 @@ function convertData(sensordata: UirasV2): PlotlyData {
   ];
 }
 
+function UirasGraph({ response }: { response: UirasV2 }) {
+  const graphData = React.useMemo(() => convertData(response), [response]);
+  if (graphData.length == 0) {
+    return <div>Virhe ladattaessa kuvaajaa</div>;
+  }
+  return (
+    <GraphContainer>
+      <Plot
+        data={graphData}
+        layout={getLayout()}
+        style={{ width: "100%", height: "100%" }}
+      />
+    </GraphContainer>
+  );
+}
+
 export function PlotyGraph2({ item }: { item: string }): JSX.Element {
-  const uirasDataV2Query = useQueryGetUirasDataV2(item);
-  if (uirasDataV2Query.isSuccess) {
-    const data = convertData(uirasDataV2Query.data);
-    if (data.length == 0) {
-      return <div>Virhe ladattaessa kuvaajaa</div>;
-    }
+  const query = usePerDeviceData(item);
+  if (!query.data) {
     return (
-      <GraphContainer>
-        <Plot
-          data={data}
-          layout={getLayout()}
-          style={{ width: "100%", height: "100%" }}
-        />
-      </GraphContainer>
+      <div>{query.error ? <div>ERROR! :(</div> : <CircularProgress />}</div>
     );
   }
-
-  return (
-    <div>
-      {uirasDataV2Query.isLoading && <CircularProgress />}
-      {uirasDataV2Query.isError && <div>ERROR! :(</div>}
-    </div>
-  );
+  return <UirasGraph response={query.data} />;
 }
