@@ -8,6 +8,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import Grid from "@mui/material/Grid";
 import React from "react";
 
+import { dataRefreshInterval } from "../consts";
 import { GetUirasResponse, UirasFeature } from "../types/UiRaSGeoJSON";
 import { PlotyGraph2 } from "./PlotyGraph2";
 import TimeSince from "./TimeSince";
@@ -106,7 +107,9 @@ function SlotList({ features }: GetUirasResponse): JSX.Element {
 }
 
 export default function UirasListAccordion(): JSX.Element {
-  const uirasQuery = useUirasV2GeoJSON();
+  const uirasQuery = useUirasV2GeoJSON({
+    refreshInterval: dataRefreshInterval,
+  });
   if (uirasQuery.error) {
     return <div>Virhe ladattaessa dataa :(</div>;
   }

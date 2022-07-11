@@ -3,6 +3,7 @@ import { CircularProgress } from "@mui/material";
 import React from "react";
 import type { PlotParams } from "react-plotly.js";
 
+import { dataRefreshInterval } from "../consts";
 import { UirasV2 } from "../types/UiRaSSingleV2";
 import Plot from "./MinPlotly";
 import { usePerDeviceData } from "./api";
@@ -99,7 +100,9 @@ function UirasGraph({ response }: { response: UirasV2 }) {
 }
 
 export function PlotyGraph2({ item }: { item: string }): JSX.Element {
-  const query = usePerDeviceData(item);
+  const query = usePerDeviceData(item, {
+    refreshInterval: dataRefreshInterval,
+  });
   if (!query.data) {
     return (
       <div>{query.error ? <div>ERROR! :(</div> : <CircularProgress />}</div>
