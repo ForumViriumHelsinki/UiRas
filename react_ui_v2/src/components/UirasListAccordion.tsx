@@ -8,10 +8,11 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import Grid from "@mui/material/Grid";
 import React from "react";
 
+import { dataRefreshInterval } from "../consts";
 import { GetUirasResponse, UirasFeature } from "../types/UiRaSGeoJSON";
 import { PlotyGraph2 } from "./PlotyGraph2";
 import TimeSince from "./TimeSince";
-import { useQueryGetUiras } from "./api";
+import { useUirasV2GeoJSON } from "./api";
 
 /**
  * Styled strings in grid rows
@@ -106,12 +107,15 @@ function SlotList({ features }: GetUirasResponse): JSX.Element {
 }
 
 export default function UirasListAccordion(): JSX.Element {
-  const uirasQuery = useQueryGetUiras();
-  return (
-    <div>
-      {uirasQuery.isLoading && <CircularProgress />}
-      {uirasQuery.isError && <div>Virhe ladattaessa dataa :(</div>}
-      {uirasQuery.isSuccess && <SlotList features={uirasQuery.data.features} />}
-    </div>
-  );
+  const uirasQuery = useUirasV2GeoJSON({
+    refreshInterval: dataRefreshInterval,
+  });
+  if (uirasQuery.error) {
+    return <div>Virhe ladattaessa dataa :(</div>;
+  }
+  const response = uirasQuery.data;
+  if (!response) {
+    return <CircularProgress />;
+  }
+  return <SlotList features={response.features} />;
 }
