@@ -6,6 +6,7 @@ import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Grid from "@mui/material/Grid";
+import { parseISO } from "date-fns";
 import React from "react";
 
 import { dataRefreshInterval } from "../consts";
@@ -44,7 +45,21 @@ const UirasBroken = styled.div(() => ({
   padding: "5px",
 }));
 
+const TimeOldText = styled.div(() => ({
+  fontSize: "100%",
+  fontWeight: "bold",
+  border: "#ffcccc 2px dotted",
+  backgroundColor: "#ffffcc",
+  padding: "5px",
+}));
+
+const TimeOld = styled.span(() => ({
+  padding: "0 2px 0 2px",
+}));
+
 function Slot({ id, properties }: UirasFeature): JSX.Element {
+  const seconds =
+    (new Date().getTime() - parseISO(properties.time).getTime()) / 1000;
   return (
     <Accordion TransitionProps={{ unmountOnExit: true }} key={id}>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -59,17 +74,32 @@ function Slot({ id, properties }: UirasFeature): JSX.Element {
           </Grid>
           <Grid item xs={4}>
             <Temperature>
-              {properties.temp_water.toFixed(1)}
-              °C
-              {properties.temp_water < -1.0 ? <ErrorOutlineRoundedIcon /> : ""}
+              {properties.temp_water < -1.0 ? (
+                <TimeOld style={{ color: "red" }}>‼︎</TimeOld>
+              ) : (
+                ""
+              )}
+              {properties.temp_water.toFixed(1).replace(".", ",")} °C
             </Temperature>
             <Moment className="text-truncate">
+              {seconds > 60 * 60 * 3 ? (
+                <TimeOld style={{ color: "red" }}>‼︎</TimeOld>
+              ) : (
+                ""
+              )}
               <TimeSince iso8601={properties.time} />
             </Moment>
           </Grid>
         </Grid>
       </AccordionSummary>
       <AccordionDetails>
+        {seconds > 60 * 60 * 3 ? (
+          <TimeOldText>
+            Mittari on poistettu tai sen lähetyksissä on ongelmia.︎
+          </TimeOldText>
+        ) : (
+          ""
+        )}
         {properties.temp_water < -1.0 ? (
           <UirasBroken>
             Mittari on rikki. Tämä on tiedossa eikä siitä tarvitse erikseen
