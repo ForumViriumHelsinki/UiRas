@@ -72,7 +72,7 @@ export default function InfoDialog({ handleClose }: InfoDialogProps) {
         <Typography gutterBottom>
           <strong>Huom!</strong> Tämä on uusi <strong>uiras.fvh.io</strong>
           -sivu, jota kehitetään aktiivisesti lähiviikkoina. Voit ehdottaa uusia
-          toiminnallisuuksia ja lähettää palautetta uimarantasensoreista
+          toiminnallisuuksia ja lähettää palautetta uimarantasensoreista{" "}
           <strong>
             <a href="https://forumvirium.fi/uiraspalaute/">
               palautelomakkeella
@@ -81,7 +81,8 @@ export default function InfoDialog({ handleClose }: InfoDialogProps) {
           .
         </Typography>
         {/*
-            explicit component is needed here, because otherwise Typography is rendered as <p> (and h4 is not allowd in there)
+            explicit component is needed here, because otherwise Typography
+            is rendered as <p> (and h4 is not allowed in there)
             TODO: try to use List and ListItem or something
           */}
         <Typography gutterBottom component={"div"}>
@@ -98,8 +99,8 @@ export default function InfoDialog({ handleClose }: InfoDialogProps) {
         </Typography>
         <Typography gutterBottom>
           UiRaS on Forum Virium Helsingin ja Helsingin kaupungin vuonna 2020
-          alkanut kokeilu. Vanha nettisivu löytyy vielä hetken aikaa osoitteessa
-          <a href="https://uiras-v1.fvh.io/">https://uiras-v1.fvh.io/</a>.
+          alkanut kokeilu. Vanha nettisivu löytyy vielä hetken aikaa osoitteessa{" "}
+          <a href="https://uiras-v1.fvh.io/">uiras-v1.fvh.io</a>.
         </Typography>
       </DialogContent>
       <DialogActions>
