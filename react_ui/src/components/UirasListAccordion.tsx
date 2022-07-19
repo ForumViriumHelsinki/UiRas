@@ -11,6 +11,7 @@ import React from "react";
 
 import { dataRefreshInterval } from "../consts";
 import { GetUirasResponse, UirasFeature } from "../types/UiRaSGeoJSON";
+import { formatTemperature } from "../utils/formatting";
 import { PlotyGraph2 } from "./PlotyGraph2";
 import TimeSince from "./TimeSince";
 import { useUirasV2GeoJSON } from "./api";
@@ -76,17 +77,14 @@ function Slot({ id, properties }: UirasFeature): JSX.Element {
             <Temperature>
               {properties.temp_water < -1.0 ? (
                 <TimeOld style={{ color: "red" }}>‼︎</TimeOld>
-              ) : (
-                ""
-              )}
-              {properties.temp_water.toFixed(1).replace(".", ",")} °C
+              ) : null}
+              {formatTemperature(properties.temp_water)}
+              {properties.temp_water < -1.0 ? <ErrorOutlineRoundedIcon /> : ""}
             </Temperature>
             <Moment className="text-truncate">
               {seconds > 60 * 60 * 3 ? (
                 <TimeOld style={{ color: "red" }}>‼︎</TimeOld>
-              ) : (
-                ""
-              )}
+              ) : null}
               <TimeSince iso8601={properties.time} />
             </Moment>
           </Grid>
