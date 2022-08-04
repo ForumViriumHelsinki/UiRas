@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import loadable from "@loadable/component";
 import ErrorOutlineRoundedIcon from "@mui/icons-material/ErrorOutlineRounded";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { CircularProgress } from "@mui/material";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -67,7 +66,11 @@ function Slot({ id, properties }: UirasFeature): JSX.Element {
   const seconds =
     (new Date().getTime() - parseISO(properties.time).getTime()) / 1000;
   return (
-    <Accordion TransitionProps={{ unmountOnExit: true }} key={id}>
+    <Accordion
+      TransitionProps={{ unmountOnExit: true }}
+      key={id}
+      disableGutters
+    >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Grid container direction="row" justifyContent="space-between">
           <Grid item xs={8} p={0}>
@@ -148,7 +151,7 @@ export default function UirasListAccordion(): JSX.Element {
   }
   const response = uirasQuery.data;
   if (!response) {
-    return <CircularProgress />;
+    return <CenteredCircleLoader />;
   }
   return <SlotList features={response.features} />;
 }
