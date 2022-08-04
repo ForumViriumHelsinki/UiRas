@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import loadable from "@loadable/component";
 import ErrorOutlineRoundedIcon from "@mui/icons-material/ErrorOutlineRounded";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { CircularProgress } from "@mui/material";
@@ -12,9 +13,13 @@ import React from "react";
 import { dataRefreshInterval } from "../consts";
 import { GetUirasResponse, UirasFeature } from "../types/UiRaSGeoJSON";
 import { formatTemperature } from "../utils/formatting";
-import PerDeviceChart from "./PerDeviceChart";
+import CenteredCircleLoader from "./CenteredCircleLoader";
 import TimeSince from "./TimeSince";
 import { useUirasV2GeoJSON } from "./api";
+
+const LazyPerDeviceChart = loadable(() => import("./PerDeviceChart"), {
+  fallback: <CenteredCircleLoader />,
+});
 
 /**
  * Styled strings in grid rows
@@ -106,7 +111,7 @@ function Slot({ id, properties }: UirasFeature): JSX.Element {
         ) : (
           ""
         )}
-        <PerDeviceChart item={id} />
+        <LazyPerDeviceChart item={id} />
       </AccordionDetails>
     </Accordion>
   );

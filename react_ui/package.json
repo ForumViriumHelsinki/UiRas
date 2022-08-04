@@ -6,6 +6,7 @@
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "@loadable/component": "^5.15.2",
     "@mui/icons-material": "^5.8.2",
     "@mui/material": "^5.9.1",
     "@mui/styles": "^5.9.1",
@@ -47,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "@types/loadable__component": "^5.13.4",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",
     "@vitejs/plugin-react": "^2.0.0",
