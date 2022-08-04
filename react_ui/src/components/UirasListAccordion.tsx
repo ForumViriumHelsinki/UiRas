@@ -12,7 +12,7 @@ import React from "react";
 import { dataRefreshInterval } from "../consts";
 import { GetUirasResponse, UirasFeature } from "../types/UiRaSGeoJSON";
 import { formatTemperature } from "../utils/formatting";
-import { PlotyGraph2 } from "./PlotyGraph2";
+import PerDeviceChart from "./PerDeviceChart";
 import TimeSince from "./TimeSince";
 import { useUirasV2GeoJSON } from "./api";
 
@@ -106,7 +106,7 @@ function Slot({ id, properties }: UirasFeature): JSX.Element {
         ) : (
           ""
         )}
-        <PlotyGraph2 item={id} />
+        <PerDeviceChart item={id} />
       </AccordionDetails>
     </Accordion>
   );
