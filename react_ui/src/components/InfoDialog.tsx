@@ -102,6 +102,17 @@ export default function InfoDialog({ handleClose }: InfoDialogProps) {
           alkanut kokeilu. Vanha nettisivu löytyy vielä hetken aikaa osoitteessa{" "}
           <a href="https://uiras-v1.fvh.io/">uiras-v1.fvh.io</a>.
         </Typography>
+        <Typography gutterBottom>
+          Tämä UiRaS-käyttöliittymä on{" "}
+          <a
+            href="https://github.com/ForumViriumHelsinki/UiRas"
+            target="_blank"
+            rel="noreferrer"
+          >
+            avointa lähdekoodia
+          </a>
+          .
+        </Typography>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Sulje</Button>

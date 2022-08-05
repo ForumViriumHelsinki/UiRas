@@ -9,6 +9,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 
+import { useNavigate } from "react-router-dom";
 import ForumViriumLogo from "../images/FORUM_VIRIUM_logo_white.png";
 import InfoDialog from "./InfoDialog";
 
@@ -16,7 +17,10 @@ const FvhLogo = styled.img(() => ({
   maxHeight: "50px",
 }));
 
+const navLinkStyle = { my: 2, color: "white" };
+
 function ResponsiveAppBar() {
+  const navigate = useNavigate();
   const [infoDialogOpen, setInfoDialogOpen] = React.useState(false);
 
   const handleOpenInfo = () => {
@@ -49,10 +53,13 @@ function ResponsiveAppBar() {
             UiRaS
           </Typography>
           <Box sx={{ flexGrow: 1 }}>
-            <Button
-              onClick={handleOpenInfo}
-              sx={{ my: 2, color: "white", display: "block" }}
-            >
+            <Button onClick={() => navigate("/")} sx={navLinkStyle}>
+              Lista
+            </Button>
+            <Button onClick={() => navigate("/kartta")} sx={navLinkStyle}>
+              Kartta
+            </Button>
+            <Button onClick={handleOpenInfo} sx={navLinkStyle}>
               Info
             </Button>
           </Box>

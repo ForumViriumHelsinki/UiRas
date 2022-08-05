@@ -99,7 +99,11 @@ function UirasGraph({ response }: { response: UirasV2 }) {
   );
 }
 
-export function PlotyGraph2({ item }: { item: string }): JSX.Element {
+export default function PerDeviceChart({
+  item,
+}: {
+  item: string;
+}): JSX.Element {
   const query = usePerDeviceData(item, {
     refreshInterval: dataRefreshInterval,
   });

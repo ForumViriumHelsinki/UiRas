@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
+import loadable from "@loadable/component";
 import ErrorOutlineRoundedIcon from "@mui/icons-material/ErrorOutlineRounded";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { CircularProgress } from "@mui/material";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -11,9 +11,14 @@ import React from "react";
 
 import { dataRefreshInterval } from "../consts";
 import { GetUirasResponse, UirasFeature } from "../types/UiRaSGeoJSON";
-import { PlotyGraph2 } from "./PlotyGraph2";
+import { formatTemperature } from "../utils/formatting";
+import CenteredCircleLoader from "./CenteredCircleLoader";
 import TimeSince from "./TimeSince";
 import { useUirasV2GeoJSON } from "./api";
+
+const LazyPerDeviceChart = loadable(() => import("./PerDeviceChart"), {
+  fallback: <CenteredCircleLoader />,
+});
 
 /**
  * Styled strings in grid rows
@@ -61,7 +66,11 @@ function Slot({ id, properties }: UirasFeature): JSX.Element {
   const seconds =
     (new Date().getTime() - parseISO(properties.time).getTime()) / 1000;
   return (
-    <Accordion TransitionProps={{ unmountOnExit: true }} key={id}>
+    <Accordion
+      TransitionProps={{ unmountOnExit: true }}
+      key={id}
+      disableGutters
+    >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Grid container direction="row" justifyContent="space-between">
           <Grid item xs={8} p={0}>
@@ -76,17 +85,14 @@ function Slot({ id, properties }: UirasFeature): JSX.Element {
             <Temperature>
               {properties.temp_water < -1.0 ? (
                 <TimeOld style={{ color: "red" }}>‼︎</TimeOld>
-              ) : (
-                ""
-              )}
-              {properties.temp_water.toFixed(1).replace(".", ",")} °C
+              ) : null}
+              {formatTemperature(properties.temp_water)}
+              {properties.temp_water < -1.0 ? <ErrorOutlineRoundedIcon /> : ""}
             </Temperature>
             <Moment className="text-truncate">
               {seconds > 60 * 60 * 3 ? (
                 <TimeOld style={{ color: "red" }}>‼︎</TimeOld>
-              ) : (
-                ""
-              )}
+              ) : null}
               <TimeSince iso8601={properties.time} />
             </Moment>
           </Grid>
@@ -108,7 +114,7 @@ function Slot({ id, properties }: UirasFeature): JSX.Element {
         ) : (
           ""
         )}
-        <PlotyGraph2 item={id} />
+        <LazyPerDeviceChart item={id} />
       </AccordionDetails>
     </Accordion>
   );
@@ -145,7 +151,7 @@ export default function UirasListAccordion(): JSX.Element {
   }
   const response = uirasQuery.data;
   if (!response) {
-    return <CircularProgress />;
+    return <CenteredCircleLoader />;
   }
   return <SlotList features={response.features} />;
 }

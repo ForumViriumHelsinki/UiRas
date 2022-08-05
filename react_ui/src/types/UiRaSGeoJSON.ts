@@ -22,9 +22,7 @@ export type FeatureProperties = {
   links: FeatureLinks;
 };
 
-export type GeometryCoordinates = {
-  coordinates: [number, number];
-};
+export type GeometryCoordinates = [number, number];
 
 export type FeatureGeometry = {
   type: "Point";
