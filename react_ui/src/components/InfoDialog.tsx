@@ -18,6 +18,10 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
+const DoneItem = styled("span")(({ theme }) => ({
+  textDecoration: "line-through",
+}));
+
 interface DialogTitleProps {
   id: string;
   children?: React.ReactNode;
@@ -66,8 +70,9 @@ export default function InfoDialog({ handleClose }: InfoDialogProps) {
         <Typography gutterBottom>
           UiRaS-uimarantasensorit mittaavat veden lämpötilaa parissa kymmenessä
           mittauspisteessä pääkaupunkiseudulla. Mittaustiedot julkaistaan tällä
-          sivulla ja lisäksi avoimena datana kenen tahansa kiinnostuneen
-          käyttöön.
+          sivulla ja lisäksi{" "}
+          <a href="https://iot.fvh.fi/opendata/uiras/">avoimena datana</a> kenen
+          tahansa kiinnostuneen käyttöön.
         </Typography>
         <Typography gutterBottom>
           <strong>Huom!</strong> Tämä on uusi <strong>uiras.fvh.io</strong>
@@ -80,6 +85,12 @@ export default function InfoDialog({ handleClose }: InfoDialogProps) {
           </strong>
           .
         </Typography>
+        <Typography gutterBottom>
+          Palautetta ei tarvitse lähettää rikkinäisistä sensoreista. Lisäksi
+          seuraaville rannoille on toivottu mittaria, mutta niillä ei ole tällä
+          hetkellä sopivaa asennuspaikkaa: Mustikkamaa, Kivinokka,
+          Kallahdenniemi, Kallahden uimaranta.
+        </Typography>
         {/*
             explicit component is needed here, because otherwise Typography
             is rendered as <p> (and h4 is not allowed in there)
@@ -89,7 +100,10 @@ export default function InfoDialog({ handleClose }: InfoDialogProps) {
           <h4>Suunniteltuja toimintoja</h4>
           <ul>
             <li>mittaushistoriakuvaajan parantelua</li>
-            <li>mittauspisteet kartalla</li>
+            <li>
+              <DoneItem>mittauspisteet kartalla</DoneItem> (Kiitos{" "}
+              <a href="https://github.com/akx">akx</a>)
+            </li>
             <li>mittauspisteeseen liittyvät lisätiedot</li>
             <li>lokikirja</li>
             <li>suosikkirantojen tallennus</li>
