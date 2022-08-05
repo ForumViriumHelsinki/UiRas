@@ -55,7 +55,6 @@ function getLayout(): Partial<PlotlyLayout> {
 }
 
 function convertData(sensordata: UirasV2): PlotlyData {
-  // TODO: Why this is empty in Eiranranta and Hanikka?
   if (sensordata.properties === undefined) {
     return [];
   }
@@ -79,6 +78,17 @@ function convertData(sensordata: UirasV2): PlotlyData {
       type: "scatter",
       // https://plotly.com/javascript/hover-text-and-formatting/#hovertemplate
       hovertemplate: "%{y:.1f}°C (%{x}) <extra></extra>",
+    },
+    {
+      x: data_d1.map(({ time }) => time),
+      y: data_d1.map(({ batt }) => batt),
+      name: "batt",
+      mode: "lines+markers",
+      type: "scatter",
+      showlegend: true,
+      opacity: 0.3,
+      // https://plotly.com/javascript/hover-text-and-formatting/#hovertemplate
+      hovertemplate: "%{y:.2f} V (%{x})",
     },
   ];
 }
