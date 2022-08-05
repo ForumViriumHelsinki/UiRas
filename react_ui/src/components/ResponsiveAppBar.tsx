@@ -17,7 +17,7 @@ const FvhLogo = styled.img(() => ({
   maxHeight: "50px",
 }));
 
-const navLinkStyle = { my: 2, color: "white" };
+const navLinkStyle = { my: 2, color: "white", py: 0 };
 
 function ResponsiveAppBar() {
   const navigate = useNavigate();
@@ -43,7 +43,7 @@ function ResponsiveAppBar() {
             href="/"
             sx={{
               mr: 2,
-              display: "flex",
+              display: { xl: "flex", xs: "none" },
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
