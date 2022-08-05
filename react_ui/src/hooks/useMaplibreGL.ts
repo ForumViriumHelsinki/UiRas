@@ -28,5 +28,14 @@ export default function useMaplibreGL(
       }
     }
   }, [options, onZoomEnd]);
+  React.useEffect(() => {
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+        mapRef.current = null;
+      }
+    };
+  }, []);
+
   return { containerRef, mapRef };
 }
