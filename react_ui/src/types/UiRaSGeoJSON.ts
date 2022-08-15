@@ -16,6 +16,7 @@ export type FeatureProperties = {
   name: string;
   location: string;
   district: string;
+  info: string;
   temp_internal: number;
   temp_water: number;
   time: string;

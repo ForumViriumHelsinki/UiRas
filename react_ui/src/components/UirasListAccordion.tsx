@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import loadable from "@loadable/component";
 import ErrorOutlineRoundedIcon from "@mui/icons-material/ErrorOutlineRounded";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -65,6 +66,7 @@ const TimeOld = styled.span(() => ({
 function Slot({ id, properties }: UirasFeature): JSX.Element {
   const seconds =
     (new Date().getTime() - parseISO(properties.time).getTime()) / 1000;
+  const infotext = properties.info;
   return (
     <Accordion
       TransitionProps={{ unmountOnExit: true }}
@@ -88,6 +90,7 @@ function Slot({ id, properties }: UirasFeature): JSX.Element {
               ) : null}
               {formatTemperature(properties.temp_water)}
               {properties.temp_water < -1.0 ? <ErrorOutlineRoundedIcon /> : ""}
+              {infotext != "" ? <InfoOutlinedIcon /> : ""}
             </Temperature>
             <Moment className="text-truncate">
               {seconds > 60 * 60 * 3 ? (
@@ -99,6 +102,7 @@ function Slot({ id, properties }: UirasFeature): JSX.Element {
         </Grid>
       </AccordionSummary>
       <AccordionDetails>
+        {infotext != "" ? <TimeOldText>{infotext}</TimeOldText> : ""}
         {seconds > 60 * 60 * 3 ? (
           <TimeOldText>
             Mittari on poistettu tai sen lähetyksissä on ongelmia.︎
