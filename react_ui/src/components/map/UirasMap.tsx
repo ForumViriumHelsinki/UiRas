@@ -42,7 +42,11 @@ function useUirasMapMarkers(mapRef: MapRef) {
     (feature: UirasFeature) => {
       if (!isValidFeature(feature)) return null;
       const el = document.createElement("div");
-      const { temp_water: temp, name } = feature.properties;
+      const { temp_water: temp } = feature.properties.measurement;
+      const { name } = feature.properties;
+      if (temp === null) {
+        return null;
+      }
       el.title = `${name} (${formatTemperature(temp)})`;
       el.style.backgroundColor = deriveHeatColor(temp, minTemp, maxTemp);
       el.className = "uiras-map-marker";

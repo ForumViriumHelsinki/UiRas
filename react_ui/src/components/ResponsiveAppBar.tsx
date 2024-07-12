@@ -11,10 +11,15 @@ import * as React from "react";
 
 import { useNavigate } from "react-router-dom";
 import ForumViriumLogo from "../images/FORUM_VIRIUM_logo_white.png";
+import HelsinkiLogo from "../images/Helsinki_logo-w.svg";
 import InfoDialog from "./InfoDialog";
 
 const FvhLogo = styled.img(() => ({
-  maxHeight: "50px",
+  maxHeight: "20px",
+}));
+
+const HkiLogo = styled.img(() => ({
+  maxHeight: "20px",
 }));
 
 const navLinkStyle = { my: 2, color: "white", py: 0 };
@@ -65,6 +70,9 @@ function ResponsiveAppBar() {
           </Box>
           <IconButton href="https://forumvirium.fi">
             <FvhLogo src={ForumViriumLogo} />
+          </IconButton>
+          <IconButton href="https://hel.fi">
+            <HkiLogo src={HelsinkiLogo} />
           </IconButton>
         </Toolbar>
       </Container>

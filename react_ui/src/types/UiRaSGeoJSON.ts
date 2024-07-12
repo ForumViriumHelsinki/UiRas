@@ -11,15 +11,21 @@ export type FeatureLink = {
 
 type FeatureLinks = Record<string, FeatureLink>;
 
+export type Measurement = {
+  time: string;
+  temp_in: number;
+  temp_water: number;
+  batt: number;
+};
+
 export type FeatureProperties = {
   battery: number;
   name: string;
   location: string;
   district: string;
-  temp_internal: number;
-  temp_water: number;
-  time: string;
+  info: string;
   links: FeatureLinks;
+  measurement: Measurement;
 };
 
 export type GeometryCoordinates = [number, number];
