@@ -1,3 +1,4 @@
+import type { MapOptions } from "maplibre-gl";
 import React from "react";
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./uiras-map.css";
@@ -7,12 +8,19 @@ import useMaplibreGL, { MapRef } from "../../hooks/useMaplibreGL";
 import useMinMaxTemp from "../../hooks/useMinMaxTemp";
 import useWindowSize from "../../hooks/useWindowSize";
 import { UirasFeature } from "../../types/UiRaSGeoJSON";
-import { formatTemperature } from "../../utils/formatting";
+import { contractName, formatTemperature } from "../../utils/formatting";
 import deriveHeatColor from "../../utils/heatColor";
 import { isValidFeature } from "../../utils/validation";
 import { useUirasV2GeoJSON } from "../api";
 // eslint-disable-next-line import/no-unresolved
 import mapStyle from "./style.json?url";
+
+const mapOptions: Partial<MapOptions> = {
+  style: mapStyle,
+  center: [24.9537, 60.1677],
+  zoom: 10,
+  minZoom: 10,
+};
 
 function getMarkerCoordinates(feature: UirasFeature) {
   return feature.geometry.coordinates;
@@ -42,7 +50,14 @@ function useUirasMapMarkers(mapRef: MapRef) {
       el.title = `${name} (${formatTemperature(temp)})`;
       el.style.backgroundColor = deriveHeatColor(temp, minTemp, maxTemp);
       el.className = "uiras-map-marker";
-      el.innerText = formatTemperature(temp);
+      const nameEl = document.createElement("div");
+      nameEl.className = "uiras-map-marker-name";
+      nameEl.innerText = contractName(name);
+      const tempEl = document.createElement("div");
+      tempEl.className = "uiras-map-marker-temp";
+      tempEl.innerText = formatTemperature(temp);
+      el.appendChild(nameEl);
+      el.appendChild(tempEl);
       return el;
     },
     [maxTemp, minTemp]
@@ -58,22 +73,29 @@ function useUirasMapMarkers(mapRef: MapRef) {
 
 export default function UirasMap() {
   const [, height] = useWindowSize(250);
-  const { containerRef, mapRef } = useMaplibreGL({
-    style: mapStyle,
-    center: [24.9537, 60.1677],
-    zoom: 10,
-    minZoom: 10,
-  });
+  const [showLabels, setShowLabels] = React.useState(false);
+  const onZoomEnd = React.useCallback(() => {
+    if (mapRef.current) {
+      const zoom = mapRef.current.getZoom();
+      setShowLabels(zoom >= 11.5);
+    }
+  }, []);
+
+  const { containerRef, mapRef } = useMaplibreGL(mapOptions, onZoomEnd);
   useUirasMapMarkers(mapRef);
   React.useEffect(() => {
     mapRef.current?.resize();
   }, [height, mapRef]);
 
   return (
-    <div
-      ref={containerRef}
-      className="map"
-      style={{ width: "100%", height: height ? `${height - 200}px` : "750px" }}
-    />
+    <div className={showLabels ? "uiras-map-show-labels" : ""}>
+      <div
+        ref={containerRef}
+        style={{
+          width: "100%",
+          height: height ? `${height - 200}px` : "750px",
+        }}
+      />
+    </div>
   );
 }

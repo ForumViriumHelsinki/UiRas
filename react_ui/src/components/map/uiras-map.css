@@ -1,4 +1,14 @@
 .uiras-map-marker {
-  padding: 1px 3px;
-  border-radius: 4px;
+    padding: 1px 3px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.uiras-map-marker-name {
+    display: none;
+}
+
+.uiras-map-show-labels .uiras-map-marker-name {
+    display: block;
 }
