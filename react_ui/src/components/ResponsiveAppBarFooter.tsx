@@ -5,16 +5,16 @@ import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import * as React from "react";
 
-import HelsinkiLogo from "../images/Helsinki_logo-w.svg";
-import EULogo from "../images/eu_flag.svg";
-import MSLLogo from "../images/logo-mysmartlife.png";
+// import HelsinkiLogo from "../images/Helsinki_logo-w.svg";
+// import EULogo from "../images/eu_flag.svg";
+// import MSLLogo from "../images/logo-mysmartlife.png";
 
 // https://forumvirium.fi/wp-content/themes/forumvirium-child/static/images/footer-bg-wavy.svg
 
-const Logo = styled.img(() => ({
-  maxHeight: "40px",
-  margin: "5px",
-}));
+// const Logo = styled.img(() => ({
+//   maxHeight: "40px",
+//   margin: "5px",
+// }));
 
 function ResponsiveAppBarFooter() {
   return (
@@ -25,9 +25,9 @@ function ResponsiveAppBarFooter() {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 0 }}>
-            <Logo alt="Helsinki logo" src={HelsinkiLogo} />
-            <Logo alt="mySmartLife" src={MSLLogo} />
-            <Logo alt="EU flag" src={EULogo} />
+            {/*<Logo alt="Helsinki logo" src={HelsinkiLogo} />*/}
+            {/*<Logo alt="mySmartLife" src={MSLLogo} />*/}
+            {/*<Logo alt="EU flag" src={EULogo} />*/}
           </Box>
         </Toolbar>
       </Container>

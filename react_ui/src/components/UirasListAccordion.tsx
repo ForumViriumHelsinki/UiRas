@@ -65,8 +65,9 @@ const TimeOld = styled.span(() => ({
 
 function Slot({ id, properties }: UirasFeature): JSX.Element {
   const seconds =
-    (new Date().getTime() - parseISO(properties.time).getTime()) / 1000;
-  const infotext = properties.info;
+    (new Date().getTime() - parseISO(properties.measurement.time).getTime()) /
+    1000;
+  const infotext = properties.info || "";
   return (
     <Accordion
       TransitionProps={{ unmountOnExit: true }}
@@ -85,18 +86,22 @@ function Slot({ id, properties }: UirasFeature): JSX.Element {
           </Grid>
           <Grid item xs={4}>
             <Temperature>
-              {properties.temp_water < -1.0 ? (
+              {properties.measurement.temp_water < -1.0 ? (
                 <TimeOld style={{ color: "red" }}>‼︎</TimeOld>
               ) : null}
-              {formatTemperature(properties.temp_water)}
-              {properties.temp_water < -1.0 ? <ErrorOutlineRoundedIcon /> : ""}
+              {formatTemperature(properties.measurement.temp_water)}
+              {properties.measurement.temp_water < -1.0 ? (
+                <ErrorOutlineRoundedIcon />
+              ) : (
+                ""
+              )}
               {infotext != "" ? <InfoOutlinedIcon /> : ""}
             </Temperature>
             <Moment className="text-truncate">
               {seconds > 60 * 60 * 3 ? (
                 <TimeOld style={{ color: "red" }}>‼︎</TimeOld>
               ) : null}
-              <TimeSince iso8601={properties.time} />
+              <TimeSince iso8601={properties.measurement.time} />
             </Moment>
           </Grid>
         </Grid>
@@ -110,7 +115,7 @@ function Slot({ id, properties }: UirasFeature): JSX.Element {
         ) : (
           ""
         )}
-        {properties.temp_water < -1.0 ? (
+        {properties.measurement.temp_water < -1.0 ? (
           <UirasBroken>
             Mittari on rikki. Tämä on tiedossa eikä siitä tarvitse erikseen
             ilmoittaa, kiitos.
@@ -150,6 +155,20 @@ export default function UirasListAccordion(): JSX.Element {
   const uirasQuery = useUirasV2GeoJSON({
     refreshInterval: dataRefreshInterval,
   });
+  // Remove all Features which have no measurement data in properties
+  if (uirasQuery.data) {
+    uirasQuery.data.features = uirasQuery.data.features.filter(
+      (feature) => feature.properties.measurement
+    );
+  }
+  // or measurement.temp_water is null
+  if (uirasQuery.data) {
+    uirasQuery.data.features = uirasQuery.data.features.filter(
+      (feature: UirasFeature) =>
+        feature.properties.measurement.temp_water !== null
+    );
+  }
+
   if (uirasQuery.error) {
     return <div>Virhe ladattaessa dataa :(</div>;
   }

@@ -12,7 +12,7 @@ async function get<T>(url: string) {
 
 export function useUirasV2GeoJSON(options?: SWRConfiguration) {
   return useSwr<GetUirasResponse>(
-    "https://iot.fvh.fi/opendata/uiras/uiras2_v2.geojson",
+    "https://bri3.fvh.io/opendata/uiras/uiras_latest.geojson",
     get,
     options
   );
@@ -20,7 +20,7 @@ export function useUirasV2GeoJSON(options?: SWRConfiguration) {
 
 export function usePerDeviceData(deviceId: string, options?: SWRConfiguration) {
   return useSwr<UirasV2>(
-    `https://iot.fvh.fi/opendata/uiras/${deviceId}_v2.geojson`,
+    `https://bri3.fvh.io/opendata/uiras/${deviceId}.geojson`,
     get,
     options
   );

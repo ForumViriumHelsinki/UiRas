@@ -68,34 +68,69 @@ export default function InfoDialog({ handleClose }: InfoDialogProps) {
       </BootstrapDialogTitle>
       <DialogContent dividers>
         <Typography gutterBottom>
+          UiRaS on <a href="https://forumvirium.fi/">Forum Virium Helsingin</a>{" "}
+          ja Helsingin kaupungin vuonna 2020 alkanut kokeilu.
+        </Typography>
+        <Typography gutterBottom>
           UiRaS-uimarantasensorit mittaavat veden lämpötilaa parissa kymmenessä
           mittauspisteessä pääkaupunkiseudulla. Mittaustiedot julkaistaan tällä
           sivulla ja lisäksi{" "}
-          <a href="https://iot.fvh.fi/opendata/uiras/">avoimena datana</a> kenen
+          <a href="https://bri3.fvh.io/opendata/uiras/">avoimena datana</a>{" "}
           tahansa kiinnostuneen käyttöön.
         </Typography>
         <Typography gutterBottom>
-          <strong>Huom!</strong> Tämä on uusi <strong>uiras.fvh.io</strong>
-          -sivu, jota kehitetään aktiivisesti lähiviikkoina. Voit ehdottaa uusia
-          toiminnallisuuksia ja lähettää palautetta uimarantasensoreista{" "}
+          Forum Viriumin osalta kokeilu alkaa olla loppusuoralla eikä uusia
+          mittareita enää asenneta. Nämä mittarit ovat rikki, kadonneet tai
+          toimivat epäluotettavasti eikä niistä tarvitse lähettää palautetta:
+          <ul>
+            <li>Aurinkolahti (kadonnut talviuintilaiturin yhteydessä)</li>
+            <li>Eiranranta (useita mittareita hajonnut haastavissa oloissa)</li>
+            <li>
+              Munkkiniemen uimaranta (kadonnut uimaportaiden uusimisen
+              yhteydessä
+            </li>
+            <li>Vetokannas (toimii katkonaisesti)</li>
+          </ul>
+        </Typography>
+        <Typography gutterBottom>
+          Seuraaville Helsigin rannoille on toivottu mittaria, mutta niillä ei
+          ole tällä hetkellä sopivaa asennuspaikkaa: Mustikkamaa, Kivinokka,
+          Kallahdenniemi, Kallahden uimaranta.
+        </Typography>
+
+        <Typography gutterBottom>
+          Voit lähettää palautetta yleisesti uimarantasensoreista{" "}
           <strong>
             <a href="https://forumvirium.fi/uiraspalaute/">
               palautelomakkeella
             </a>
           </strong>
+          . Helsingin kaupungille voit lähettää palautetta{" "}
+          <a href="https://palautteet.hel.fi/tunnistautuminen-uusi-palaute">
+            kaupungin palautelomakkeella.
+          </a>
+        </Typography>
+
+        <Typography gutterBottom>
+          Espooseen tai Vantaalle ei ole tällä hetkellä suunnitteilla uusia
+          mittauspisteitä UiRaS-kokeilun puitteissa eikä nykyisiä mittareita
+          uusita niiden lopulta hajotessa. Voit kuitenkin lähettää toiveen
+          uusista mittauspisteistä{" "}
+          <a href="https://easiointi.espoo.fi/eFeedback/fi/Feedback/16-Liikunta">
+            Espoon kaupungille
+          </a>{" "}
+          (valitse lomakkeelta Palautteen aihe "Uimarannat ja avannot" ja
+          Palautteen luonne "Toimenpide-ehdotus") tai{" "}
+          <a href="https://asiointi.vantaa.fi/palaute#/form/90000">
+            Vantaan kaupungille
+          </a>{" "}
           .
         </Typography>
-        <Typography gutterBottom>
-          Palautetta ei tarvitse lähettää rikkinäisistä sensoreista. Lisäksi
-          seuraaville rannoille on toivottu mittaria, mutta niillä ei ole tällä
-          hetkellä sopivaa asennuspaikkaa: Mustikkamaa, Kivinokka,
-          Kallahdenniemi, Kallahden uimaranta.
-        </Typography>
+
         {/*
             explicit component is needed here, because otherwise Typography
             is rendered as <p> (and h4 is not allowed in there)
             TODO: try to use List and ListItem or something
-          */}
         <Typography gutterBottom component={"div"}>
           <h4>Suunniteltuja toimintoja</h4>
           <ul>
@@ -104,18 +139,17 @@ export default function InfoDialog({ handleClose }: InfoDialogProps) {
               <DoneItem>mittauspisteet kartalla</DoneItem> (Kiitos{" "}
               <a href="https://github.com/akx">akx</a>)
             </li>
+            <li>linkit listauksesta kartalle ja päin vastoin</li>
             <li>mittauspisteeseen liittyvät lisätiedot</li>
+            <li>rannan sinilevätilanne</li>
             <li>lokikirja</li>
             <li>suosikkirantojen tallennus</li>
             <li>kielituki eli svenska- ja English-versiot</li>
             <li>ehdottamasi toiminto?</li>
           </ul>
         </Typography>
-        <Typography gutterBottom>
-          UiRaS on Forum Virium Helsingin ja Helsingin kaupungin vuonna 2020
-          alkanut kokeilu. Vanha nettisivu löytyy vielä hetken aikaa osoitteessa{" "}
-          <a href="https://uiras-v1.fvh.io/">uiras-v1.fvh.io</a>.
-        </Typography>
+        */}
+
         <Typography gutterBottom>
           Tämä UiRaS-käyttöliittymä on{" "}
           <a
