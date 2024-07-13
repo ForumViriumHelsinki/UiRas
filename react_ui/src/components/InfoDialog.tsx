@@ -119,8 +119,8 @@ export default function InfoDialog({ handleClose }: InfoDialogProps) {
           <a href="https://easiointi.espoo.fi/eFeedback/fi/Feedback/16-Liikunta">
             Espoon kaupungille
           </a>{" "}
-          (valitse lomakkeelta Palautteen aihe "Uimarannat ja avannot" ja
-          Palautteen luonne "Toimenpide-ehdotus") tai{" "}
+          (valitse lomakkeelta Palautteen aihe &quot;Uimarannat ja avannot&quot;
+          ja Palautteen luonne &quot;Toimenpide-ehdotus&quot;) tai{" "}
           <a href="https://asiointi.vantaa.fi/palaute#/form/90000">
             Vantaan kaupungille
           </a>{" "}
