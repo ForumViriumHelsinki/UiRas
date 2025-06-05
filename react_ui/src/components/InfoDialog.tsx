@@ -72,7 +72,7 @@ export default function InfoDialog({ handleClose }: InfoDialogProps) {
           ja Helsingin kaupungin vuonna 2020 alkanut kokeilu.
         </Typography>
         <Typography gutterBottom>
-          UiRaS-uimarantasensorit mittaavat veden lämpötilaa parissa kymmenessä
+          UiRaS-uimarantasensorit ovat mitanneet veden lämpötilaa 20-30
           mittauspisteessä pääkaupunkiseudulla. Mittaustiedot julkaistaan tällä
           sivulla ja lisäksi{" "}
           <a href="https://bri3.fvh.io/opendata/uiras/">avoimena datana</a>{" "}
@@ -80,7 +80,12 @@ export default function InfoDialog({ handleClose }: InfoDialogProps) {
         </Typography>
         <Typography gutterBottom>
           Forum Viriumin osalta kokeilu alkaa olla loppusuoralla eikä uusia
-          mittareita enää asenneta. Nämä mittarit ovat rikki, kadonneet tai
+          mittareita enää asenneta eikä vanhoja korjata.
+          Helsingin kaupunki on aloittamassa uimarantojen veden lämpätilan mittauksia,
+          mutta aikataulu on vielä avoinna.
+        </Typography>
+        <Typography gutterBottom>
+          Nämä mittarit ovat rikki, kadonneet tai
           toimivat epäluotettavasti eikä niistä tarvitse lähettää palautetta:
           <ul>
             <li>Aurinkolahti (kadonnut talviuintilaiturin yhteydessä)</li>
@@ -90,25 +95,21 @@ export default function InfoDialog({ handleClose }: InfoDialogProps) {
               yhteydessä
             </li>
             <li>Vetokannas (toimii katkonaisesti)</li>
+            <li>Poliisien kesäkoti (hajosi jäihin talvella 2024-25)</li>
           </ul>
         </Typography>
         <Typography gutterBottom>
-          Seuraaville Helsigin rannoille on toivottu mittaria, mutta niillä ei
+          Seuraaville Helsingin rannoille on toivottu mittaria, mutta niillä ei
           ole tällä hetkellä sopivaa asennuspaikkaa: Mustikkamaa, Kivinokka,
           Kallahdenniemi, Kallahden uimaranta.
         </Typography>
 
         <Typography gutterBottom>
-          Voit lähettää palautetta yleisesti uimarantasensoreista{" "}
-          <strong>
-            <a href="https://forumvirium.fi/uiraspalaute/">
-              palautelomakkeella
-            </a>
-          </strong>
-          . Helsingin kaupungille voit lähettää palautetta{" "}
+          Helsingin kaupungille voit lähettää palautetta{" "}
           <a href="https://palautteet.hel.fi/tunnistautuminen-uusi-palaute">
             kaupungin palautelomakkeella.
-          </a>
+          </a>{" "}
+          Palautteen antaminen suoraan kaupungille voi nopeuttaa kaupungin oman mittaustoiminnan alkamista.
         </Typography>
 
         <Typography gutterBottom>
@@ -126,30 +127,6 @@ export default function InfoDialog({ handleClose }: InfoDialogProps) {
           </a>{" "}
           .
         </Typography>
-
-        {/*
-            explicit component is needed here, because otherwise Typography
-            is rendered as <p> (and h4 is not allowed in there)
-            TODO: try to use List and ListItem or something
-        <Typography gutterBottom component={"div"}>
-          <h4>Suunniteltuja toimintoja</h4>
-          <ul>
-            <li>mittaushistoriakuvaajan parantelua</li>
-            <li>
-              <DoneItem>mittauspisteet kartalla</DoneItem> (Kiitos{" "}
-              <a href="https://github.com/akx">akx</a>)
-            </li>
-            <li>linkit listauksesta kartalle ja päin vastoin</li>
-            <li>mittauspisteeseen liittyvät lisätiedot</li>
-            <li>rannan sinilevätilanne</li>
-            <li>lokikirja</li>
-            <li>suosikkirantojen tallennus</li>
-            <li>kielituki eli svenska- ja English-versiot</li>
-            <li>ehdottamasi toiminto?</li>
-          </ul>
-        </Typography>
-        */}
-
         <Typography gutterBottom>
           Tämä UiRaS-käyttöliittymä on{" "}
           <a
